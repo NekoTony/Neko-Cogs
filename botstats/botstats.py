@@ -19,6 +19,7 @@ class BotStats:
         status = list(self.bot.servers)[0].me.status
         game = discord.Game(name=message)
         await self.bot.change_presence(status=status, game=game)
+        await asyncio.sleep(60*60)
         await self.bot.say('Stats has been updated')
 
     async def bot_status(self):
