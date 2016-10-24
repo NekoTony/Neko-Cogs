@@ -1,0 +1,9 @@
+{
+
+	    "AUTHOR" : "NerdieTony",
+	    "SHORT" : "Display Bot Stats in status!",
+	    "DESCRIPTION" : "All it does is displays bot stats within the status of your bot. Simple!",
+	    "DISABLED" : false,
+	    "NAME" : "Botstats",
+	    "INSTALL_MSG" : "Waddup! \nLooks like you installed **BotStats** Cog\n Enjoy\n\n **Official Server**: https://discord.me/cherryblossombot "
+	}
