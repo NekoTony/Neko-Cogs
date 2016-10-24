@@ -82,28 +82,3 @@ class Transformice:
 def setup(bot):
     n = Transformice(bot)
     bot.add_cog(n)
-    
-    async def tribe(self, ctx, *, tribe):
-        """Get Transformice tribe info."""
-        
-        try:
-            self.bot.send_typing(ctx.message.channel)
-            link = "http://api.micetigri.fr/json/tribe/{}".format(tribe)
-            async with aiohttp.get(link) as t:
-            	   result = await t.json()
-            	   tribe = result['name']
-            	   tribeid = result['id']
-            	   members = result['members']
-            	   join = result['forum_recruitment']
-            	   msg2 = "Transformice Tribe Info:\n"
-            	   msg2 += "**Tribe:** {}\n".format(tribe)
-            	   msg2 += "**Id:** {}\n".format(tribeid)
-            	   msg2 += "**Members:** {}\n".format(members)
-            	   msg2 += "**Openings:** {}\n".format(join)
-            	   await self.bot.say(msg2)
-        except ValueError:
-        	await self.bot.say("The tribe doesn't exist")
-
-def setup(bot):    
-    n = Transformice(bot)
-    bot.add_cog(n)
