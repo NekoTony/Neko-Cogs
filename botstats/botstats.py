@@ -12,6 +12,7 @@ class BotStats:
         self.bot = bot
     
     @commands.command()
+    @checks.is_owner()
     async def botstats(self):
         """Display Bot Stats in status!"""
         message = await self.bot_status()
@@ -29,3 +30,4 @@ class BotStats:
 
 def setup(bot):
     bot.add_cog(BotStats(bot))
+
