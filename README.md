@@ -6,4 +6,4 @@
 <br><br><br>
 <h1 align="center">Cogs</h1>
 <h3 align="center">Fuck.py</h3>
-<p align="center">Fuck is a lovely cog just for the family!! It allows you to create a "Fuck you" statement! What was he purpose of this? THIS IS NONE!!! <br> The cog is perfect for revenge, horrible at weddings</p>
+<p align="center">Fuck is a lovely cog just for the family!! It allows you to create a "Fuck you" statement, and that's it. What was he purpose of this? THIS IS NONE!!! <br> The cog is perfect for revenge, horrible at weddings</p>
