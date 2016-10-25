@@ -1,5 +1,4 @@
 <p align="center">
-![N|Solid](http://i.imgur.com/OvqOoh0.jpg)
-# Nerdie-Cog
-The only TwentySix cogs out of boredeom, lonilness, and what i think is sweat. 
+  <img src="http://s.4cdn.org/image/title/105.gif">
+  <h1>Nerdie-Cogs
 </p>
