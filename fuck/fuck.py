@@ -10,7 +10,7 @@ class Fuck:
         self.fuck = ["Fuck you, {}. ~{}", "Fucking fuck off, {}. ~{}"]
 
     @commands.command(pass_context=True)
-    async def mycom(self, ctx, name):
+    async def fuk(self, ctx, name):
         """Get fuck you statements"""
         user = ctx.message.author
         await self.bot.say("**" + randchoice(self.fuck).format(name, user) + "**")
