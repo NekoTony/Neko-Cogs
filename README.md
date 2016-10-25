@@ -22,5 +22,12 @@
 <p align="center"><img src="https://media.giphy.com/media/MRPnRXOJpzagw/giphy.gif"></img></p>
 <p align="center">Now, i bet you are wondering what is transformice? It's an indie game made by french people, dominated by english people, and has tons of users. <b>Note</b>: You will need a transformice.com acconut for this to work!</p>
 <p align="center"><code>~tfm avatar <username></code></p>
-<p align="center"><code>~tfm mouse <username?</code></p>
+<p align="center"><code>~tfm mouse <username></code></p>
 <p align="center"><code>~tfm tribe <tribe_name></code></p>
+
+<h1 align="center">Need help? Found a bug? Got an idea for a cog?</h1>
+<p align="center">Best way to get help is to go to my offical servers (For my bot/projects) and go to the #support channel and ask for help. <br>All bugs should be reported within the issues of this repo.<br>All suggestions could go in #suggestions on the server or i'll accept them in issues aswell!!</p>
+
+<h1 align="center">Offical Server</h1>
+<a href="http://www.discord.me/cherryblossombot">
+<img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200">
