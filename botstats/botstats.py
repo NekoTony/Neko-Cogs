@@ -10,25 +10,22 @@ class BotStats:
     
     def __init__(self, bot):
         self.bot = bot
-    
-    @commands.command()
-    @checks.is_owner()
-    async def botstats(self):
-        """Display Bot Stats in status!"""
-        message = await self.bot_status()
-        status = list(self.bot.servers)[0].me.status
-        game = discord.Game(name=message)
-        await self.bot.change_presence(status=status, game=game)
-        await asyncio.sleep(60*30)
-        await self.bot.say('Stats has been updated')
 
-    async def bot_status(self):
+    @checks.is_owner()
+    @commands.command(pass_context=True)
+    async def botstats(self, ctx):
+        """Display Bot Stats in status!"""
+        
+        await asyncio.sleep(120)
         name = self.bot.user.name
         prefix = ctx.prefix
         servers = str(len(self.bot.servers))
-        message = '{}help | {} | {}'.format(str(prefix), str(servers), str(users))
-        return message
+        users = str(len(set(self.bot.get_all_members())))
+        message = '{}help | {} servers| {} users'.format(prefix, servers, users)
+        status = list(self.bot.servers)[0].me.status
+        game = discord.Game(name=message)
+        await self.bot.change_presence(status=status, game=game)
+        await self.bot.say('Bot stats is now displaying in status!!')
 
 def setup(bot):
     bot.add_cog(BotStats(bot))
-
