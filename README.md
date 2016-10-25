@@ -6,7 +6,7 @@
 <br><br><br>
 <h1 align="center">Cogs</h1>
 <h3 align="center">Fuck.py</h3>
-<p align="center"><img src="https://media.giphy.com/media/TZFmvyDvr3WaQ/giphy.giff"></img></p>
+<p align="center"><img src="https://media.giphy.com/media/TZFmvyDvr3WaQ/giphy.gif"></img></p>
 <p align="center">Fuck is a lovely cog just for the family!! It allows you to create a "Fuck you" statement, and that's it. What was the purpose of <b>fuck.py</b>? THERE IS NONE!!! <br> The cog is perfect for revenge, but horrible at weddings</p>
 <p align="center"><code>~fuck <name></code></p>
 <br><br><br>
