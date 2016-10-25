@@ -29,5 +29,4 @@
 <p align="center">Best way to get help is to go to my offical servers (For my bot/projects) and go to the #support channel and ask for help. <br>All bugs should be reported within the issues of this repo.<br>All suggestions could go in #suggestions on the server or i'll accept them in issues aswell!!</p>
 
 <h1 align="center">Offical Server</h1>
-<a href="http://www.discord.me/cherryblossombot">
-<center><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></center>
+<p align="center"><a href="http://www.discord.me/cherryblossombot"><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></a></p>
