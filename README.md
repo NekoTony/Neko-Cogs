@@ -30,4 +30,4 @@
 
 <h1 align="center">Offical Server</h1>
 <a href="http://www.discord.me/cherryblossombot">
-<img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200">
+<center><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></center>
