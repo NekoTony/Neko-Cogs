@@ -1,8 +1,10 @@
 {
-        "AUTHOR" : "NerdieTony",
-	    "SHORT" : "Receive fduck ypuisplay bot stats in status!",
-	    "DESCRIPTION" : "All it does is displays bot stats within the status of your bot. Simple!",
+	    "AUTHOR" : "NerdieTony",
+	    "SHORT" : "Display BotStats within the status!",
+	    "DESCRIPTION" : "The magical world of botstats, allows you to display your stats within the bots status!",
 	    "DISABLED" : false,
-	    "NAME" : "Fuck",
-	    "INSTALL_MSG" : "Waddup! \nLooks like you installed **Fuck** Cog\n Enjoy\n\n **Official Server**: https://discord.me/cherryblossombot "
+	    "NAME" : "BotStats",
+	    "INSTALL_MSG" : "Wow! \nYou just installed **Transformice** Cog\n Enjoy!\n\n **Official Server**: https://discord.me/cherryblossombot "
 	}
+
+
