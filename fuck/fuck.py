@@ -1,21 +1,19 @@
 import discord
-from random import choice as randchoice
 from discord.ext import commands
+from random import choice as randchoice
 
 class Fuck:
     """Display fuck you statements"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.fuck = ["Fuck you, {}. ~{}"]
+        self.fuck = ["Fuck you, {}. ~{}", "Fucking fuck off, {}. ~{}"]
 
-    @commands.command()
-    async def fuck(self, name):
-        """Get fuck statements"""
-
-        user = ctx.message.user.name
-        fuck = "+ randchoice(self.fuck) +".format(name, user)
-        await self.bot.say(fuck)
+    @commands.command(pass_context=True)
+    async def mycom(self, ctx, name):
+        """Get fuck you statements"""
+        user = ctx.message.author
+        await self.bot.say("**" + randchoice(self.fuck).format(name, user) + "**")
 
 def setup(bot):
     bot.add_cog(Fuck(bot))
