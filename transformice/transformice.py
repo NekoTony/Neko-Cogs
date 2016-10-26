@@ -1,8 +1,7 @@
+from discord.ext import commands
+from __main__ import send_cmd_help
 import aiohttp
 import json
-from __main__ import send_cmd_help
-from discord.ext import commands
-
 
 class Transformice:
     """Get user/tribe info from Transformice.com"""
@@ -80,5 +79,4 @@ class Transformice:
 
 
 def setup(bot):
-    n = Transformice(bot)
-    bot.add_cog(n)
+    bot.add_cog(Transformice(bot))
