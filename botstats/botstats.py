@@ -1,7 +1,5 @@
 from .utils import checks
-
 from discord.ext import commands
-import asyncio
 import discord
 import os
 
@@ -15,8 +13,6 @@ class BotStats:
     @commands.command(pass_context=True)
     async def botstats(self, ctx):
         """Display Bot Stats in status!"""
-        
-        await asyncio.sleep(120)
         name = self.bot.user.name
         prefix = ctx.prefix
         servers = str(len(self.bot.servers))

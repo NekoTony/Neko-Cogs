@@ -19,7 +19,6 @@ class Transformice:
         """Get Transformice mouse info"""
 
         try:
-            self.bot.send_typing(ctx.message.channel)
             link = "http://api.micetigri.fr/json/player/{}".format(user)
             async with aiohttp.get(link) as m:
                 result = await m.json()
@@ -45,7 +44,6 @@ class Transformice:
         """Get Transformice tribe info."""
 
         try:
-            self.bot.send_typing(ctx.message.channel)
             link = "http://api.micetigri.fr/json/tribe/{}".format(tribe)
             async with aiohttp.get(link) as t:
                 result = await t.json()
@@ -67,7 +65,6 @@ class Transformice:
         """Get Transformice mouse avatar from Atelier801"""
 
         try:
-            self.bot.send_typing(ctx.message.channel)
             link = "http://api.micetigri.fr/json/player/{}".format(user)
             async with aiohttp.get(link) as m:
                 result = await m.json()
