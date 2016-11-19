@@ -13,7 +13,7 @@ class Account:
         self.bot = bot
         self.profile = 'data/account/accounts.json'
     
-    @commands.command(name="signup", pass_context=True, invoke_without_command=True)
+    @commands.command(name="signup", pass_context=True, invoke_without_command=True, no_pm=True)
     async def _reg(self, ctx):
         """Sign up to get your own account today!"""
 
@@ -38,7 +38,7 @@ class Account:
             await self.bot.say(embed=data)
         
     
-    @commands.command(name="account", pass_context=True, invoke_without_command=True)
+    @commands.command(name="account", pass_context=True, invoke_without_command=True, no_pm=True)
     async def _acc(self, ctx, user : discord.Member=None):
         """Your/Others Account"""
         
@@ -65,7 +65,7 @@ class Account:
                     pass
                 if "Gender" in connect[server.id][user.id]:
                     gender = connect[server.id][user.id]["Gender"]
-                    data.add_field(name="Gender:", value=Gender)
+                    data.add_field(name="Gender:", value=gender)
                 else:
                     pass 
                 if "Job" in connect[server.id][user.id]:
@@ -151,7 +151,7 @@ class Account:
                 data.add_field(name="Error:warning:",value="{} doesn't have an account at the moment, sorry.".format(user.mention))
                 await self.bot.say(embed=data)
 
-    @commands.group(name="update", pass_context=True, invoke_without_command=True)
+    @commands.group(name="update", pass_context=True, invoke_without_command=True, no_pm=True)
     async def update(self, ctx):
         """Update your TPC"""
         await send_cmd_help(ctx)
