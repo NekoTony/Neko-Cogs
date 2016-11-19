@@ -1,0 +1,9 @@
+
+{
+	    "AUTHOR" : "NerdieTony",
+	    "SHORT" : "The Account Cog",
+	    "DESCRIPTION" : "Just an account cog with fields like email, age, gender, and such.",
+	    "DISABLED" : false,
+	    "NAME" : "Account",
+	    "INSTALL_MSG" : "Wow! \nYou just installed **Account** Cog\n Enjoy!\n\n **Official Server**: https://discord.me/cherryblossombot "
+	}
