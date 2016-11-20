@@ -13,6 +13,7 @@ class BotStats:
     @commands.command(pass_context=True)
     async def botstats(self, ctx):
         """Display Bot Stats in status!"""
+        user = ctx.message.author
         name = self.bot.user.name
         prefix = ctx.prefix
         servers = str(len(self.bot.servers))
@@ -21,7 +22,9 @@ class BotStats:
         status = list(self.bot.servers)[0].me.status
         game = discord.Game(name=message)
         await self.bot.change_presence(status=status, game=game)
-        await self.bot.say('Bot stats is now displaying in status!!')
+        data = discord.Embed(colour=user.colour)
+        data.add_field(name="Congrats!:sparkles:",value="You have updated your game status based on you bot stats!")
+        await self.bot.say(embed=data)
 
 def setup(bot):
     bot.add_cog(BotStats(bot))
