@@ -41,10 +41,16 @@ class Account:
     @commands.command(name="account", pass_context=True, invoke_without_command=True, no_pm=True)
     async def _acc(self, ctx, user : discord.Member=None):
         """Your/Others Account"""
+                    
+        connect = fileIO(self.profile, "load")
+        server = ctx.message.server
         
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if not user:
-            connect = fileIO(self.profile, "load")
-            server = ctx.message.server
             user = ctx.message.author
             if user.id in connect[server.id]:
                 data = discord.Embed(description="{}".format(server), colour=user.colour)
@@ -164,6 +170,12 @@ class Account:
         server = ctx.message.server
         user = ctx.message.author
         prefix = ctx.prefix
+
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+        
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -183,6 +195,12 @@ class Account:
         server = ctx.message.server
         user = ctx.message.author
         prefix = ctx.prefix
+        
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -201,6 +219,13 @@ class Account:
         connect = fileIO(self.profile, "load")
         server = ctx.message.server
         user = ctx.message.author
+        prefix = ctx.prefix
+
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -220,6 +245,12 @@ class Account:
         server = ctx.message.server
         user = ctx.message.author
         prefix = ctx.prefix
+
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -239,6 +270,12 @@ class Account:
         server = ctx.message.server
         user = ctx.message.author
         prefix = ctx.prefix
+                
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -258,6 +295,12 @@ class Account:
         server = ctx.message.server
         user = ctx.message.author
         prefix = ctx.prefix
+
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -277,6 +320,12 @@ class Account:
         server = ctx.message.server
         user = ctx.message.author
         prefix = ctx.prefix
+
+        if server.id not in connect:
+            connect[server.id] = {}
+        else:
+            pass
+
         if user.id not in connect[server.id]:
             data = discord.Embed(colour=user.colour)
             data.add_field(name="Error:warning:",value="Sadly, this feature is only available for people who had registered for an account. \n\nYou can register for a account today for free. All you have to do is say `{}signup` and you'll be all set.".format(prefix))
@@ -304,5 +353,3 @@ def setup(bot):
     check_folder()
     check_file()
     bot.add_cog(Account(bot))
- 
-
