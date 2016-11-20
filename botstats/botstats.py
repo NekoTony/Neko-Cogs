@@ -4,15 +4,15 @@ import discord
 import os
 
 class BotStats:
-    "You can display your bot stats"
+    "You can display your bot stats in your game status"
     
     def __init__(self, bot):
         self.bot = bot
 
     @checks.is_owner()
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True, no_pm=True)
     async def botstats(self, ctx):
-        """Display Bot Stats in status!"""
+        """Display Bot Stats in game status!"""
         user = ctx.message.author
         name = self.bot.user.name
         prefix = ctx.prefix
