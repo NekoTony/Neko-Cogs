@@ -7,7 +7,7 @@ import os
 from .utils.chat_formatting import *
 
 class Account:
-    """The About Me Cog"""
+    """The Account Cog"""
 
     def __init__(self, bot):
         self.bot = bot
