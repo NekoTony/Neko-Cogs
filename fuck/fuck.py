@@ -20,7 +20,7 @@ class Fuck:
             await self.bot.say(embed=data)
         else:
             fuck = randchoice(self.fuck).format(user.mention, auth.mention)
-            data = discord.Embed(colour=usera.colour)
+            data = discord.Embed(colour=user.colour)
             data.add_field(name="Fuck You!:middle_finger:",value="{}".format(fuck))
             await self.bot.say(embed=data)
 
