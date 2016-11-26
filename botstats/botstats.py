@@ -11,9 +11,9 @@ class BotStats:
         self.bot = bot
 
     @checks.is_owner()
-    @commands.command(pass_context=True, no_pm=True)
+    @commands.command(pass_context=True)
     async def botstats(self, ctx):
-        """Display Bot Stats in game status every 10 seconds!"""
+        """Display Bot Stats in game status that update every 10 seconds!"""
         
         while True:
             user = ctx.message.author
