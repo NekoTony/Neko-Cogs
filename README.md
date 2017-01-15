@@ -26,7 +26,7 @@
 <p align="center"><code>~tfm tribe <tribe_name></code></p>
 
 <h1 align="center">Need help? Found a bug? Got an idea for a cog?</h1>
-<p align="center">Best way to get help is to go to my offical servers (For my bot/projects) and go to the #support channel and ask for help. <br>All bugs should be reported within the issues of this repo.<br>All suggestions could go in #suggestions on the server or i'll accept them in issues aswell!!</p>
+<p align="center">Best way to get help is to go to Red's Cog Support Server and ask for help in the <b>#support_nerdie-cogs</b> Channel.</p>
 
-<h1 align="center">Offical Server</h1>
-<p align="center"><a href="http://www.discord.me/cherryblossombot"><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></a></p>
+<h1 align="center">Click the image to visit the Red Cog Support Server</h1>
+<p align="center"><a href="https://discord.gg/463dJbT"><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></a></p>
