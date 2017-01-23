@@ -1,6 +1,6 @@
 {
   "Mario": {
-    "desc": "Mario from Super Mario Bros",
+.    "desc": "Mario comes from the Super Mario Bros. series. He is a plumber in the Mushroom Kingdom, and frequently saves it (and Princess Peach/Toadstool) from the evil hands of Bowser, the King of the Koopas. Identifiable by his red cap and his jumping prowess, he is sure to be a match on the battlefield.",
     "neutral": {
       "name": "Fireball",
       "damage": 6,
