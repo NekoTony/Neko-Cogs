@@ -1,0 +1,35 @@
+{
+  "Mario": {
+    "desc": "Mario from Super Mario Bros",
+    "neutral": {
+      "name": "Fireball",
+      "damage": 6,
+      "usage": 7,
+      "desc": "Mario launches an orange fireball from his hand as a projectile. The fireball bounces along the ground several times before disappearing"
+    },
+    "side": {
+      "name": "Cape",
+      "damage": 7,
+      "usage": 7,
+      "desc": "Mario swings a yellow cape from Super Mario World that reflects projectiles and enemies. It can also be used as a brief but continuously available recovery."
+    },
+    "up": {
+      "name": "Super Jump Punch",
+      "damage": 4,
+      "usage": 10,
+      "desc": "Mario performs a rising uppercut that releases coins from opponents it hits, which are aesthetically similar to the ones from \"New Super Mario Bros. U\""
+    },
+    "down": {
+      "name": "F.L.U.D.D.",
+      "damage": 2,
+      "usage": 20,
+      "desc": "Mario pulls out F.L.U.D.D. from Super Mario Sunshine, which will blast aqua jets of water to push back opponents."
+    },
+    "final": {
+      "name": "Mario Finale",
+      "damage": 25,
+      "usage": 1,
+      "desc": "Mario shoots a massive, continuous spinning stream of flames horizontally across the stage. The vortex deals repeated damage and pulls the victims towards the blast line it is heading for."
+    }
+  }
+}
