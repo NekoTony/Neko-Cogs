@@ -6,5 +6,5 @@
 	    "NAME" : "Nookpedia",
 	    "TAGS" : ["AnimalCrossing", "Nintendo", "Nookpedia"],
 	    "REQUIREMENTS" : ["beautifulsoup4"],
-	    "INSTALL_MSG" : "You just installed **Nookpedia**! \nSo, you don't play animal crossing, you say? Well then, this cog will be very useless to you. This cog fetches data from the Animal Crossing Wiki, Nookpedia. There's villagers, bugs, etc.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
+	    "INSTALL_MSG" : "You just installed **Nookpedia.py**! \nSo, you don't play animal crossing, you say? Well then, this cog will be very useless to you. This cog fetches data from the Animal Crossing Wiki, Nookpedia. There's villagers, bugs, etc.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
