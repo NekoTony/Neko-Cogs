@@ -4,7 +4,7 @@
 	    "DESCRIPTION" : "All it does it provides random Fuck you statements. It's good for revenge and bad for weddings.",
 	    "DISABLED" : false,
 	    "NAME" : "Fuck",
-	    "TAGS" : ["fuck", "fuckoff", "fucker"]
+	    "TAGS" : ["fuck", "fuckoff", "fucker"],
 	    "INSTALL_MSG" : "You just installed **Fuck.py**! \nAll it does it provides random Fuck you statements. It's good for revenge and bad for weddings.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
 
