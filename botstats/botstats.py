@@ -17,7 +17,7 @@ class BotStats:
     @checks.is_owner()
     @commands.group(pass_context=True)
     async def botstats(self, ctx):
-        """Made this into a group"""
+        """Display Bot Stats in game status that update every 10 seconds!"""
 
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
@@ -25,7 +25,7 @@ class BotStats:
     @checks.is_owner()
     @botstats.command(pass_context=True)
     async def toggle(self, ctx):
-        """Display Bot Stats in game status that update every 10 seconds!"""
+        """Turn BotStatus on and off, like a boss"""
         
         servers = str(len(self.bot.servers))
         users = str(len(set(self.bot.get_all_members())))
@@ -41,6 +41,21 @@ class BotStats:
             dataIO.save_json(self.derp, self.imagenius)
             await self.bot.say("The botstats have been turned off!")
 
+    @checks.is_owner()
+    @botstats.command(pass_context=True)
+    async def timeout(self, ctx, seconds : int):
+        """Decide how often the BotStatus
+
+
+        Default is 15
+        """
+
+        if seconds > 15:
+            self.imagenius["SECONDS2LIVE"] = seconds
+            dataIO.save_json(self.derp, self.imagenius)
+            await self.bot.say("Your bot status will not update every {} seconds! #BOSS".format(seconds))
+        else:
+            await self.bot.say("NO, IT CAN'T BE UNDER 15 SECONDS. THE PEOPLE AT DISCORD WILL FREAK....")
 
     async def botstatz(self, servers, users):    
         while True:
@@ -49,7 +64,7 @@ class BotStats:
                 status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
                 await self.bot.change_presence(status=status, game=game)
-                await asyncio.sleep(10)
+                await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 await self.bot.change_presence(status=None, game=None)
                 break
@@ -65,7 +80,7 @@ class BotStats:
                 status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
                 await self.bot.change_presence(status=status, game=game)
-                await asyncio.sleep(10)
+                await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 pass
         else:
@@ -84,14 +99,13 @@ def check_files():
     json = {
         "MAINPREFIX" : "This can be set when starting botstats thru [p]botstats toggle",
         "TOGGLE" : False,
-        "SECONDS2LIVE" : "15"
+        "SECONDS2LIVE" : 15
     }
 
     if not dataIO.is_valid_json(twentysix):
         print("Derp Derp Derp...")
         dataIO.save_json(twentysix, json)
         print("Created json.json!")
-
 
 def setup(bot):
     check_folders()
