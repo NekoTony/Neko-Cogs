@@ -4,6 +4,6 @@
 	    "DESCRIPTION" : "Time to get ya fortune today, or tommorow, or whenever...",
 	    "DISABLED" : false,
 	    "NAME" : "Fortune",
-	    "TAGS" : ["fortune"]
+	    "TAGS" : ["fortune"],
 	    "INSTALL_MSG" : "You just installed **Fortune**! \nTime to get ya fortune today, or tommorow, or whenever..\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
