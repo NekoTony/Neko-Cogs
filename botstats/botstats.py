@@ -53,7 +53,7 @@ class BotStats:
         if seconds >= 15:
             self.imagenius["SECONDS2LIVE"] = seconds
             dataIO.save_json(self.derp, self.imagenius)
-            await self.bot.say("Your bot status will not update every {} seconds! #BOSS".format(seconds))
+            await self.bot.say("Your bot status will now update every {} seconds! #BOSS".format(seconds))
         else:
             await self.bot.say("NO, IT CAN'T BE UNDER 15 SECONDS. THE PEOPLE AT DISCORD WILL FREAK....")
 
