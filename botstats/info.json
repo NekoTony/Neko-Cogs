@@ -4,7 +4,8 @@
 	    "DESCRIPTION" : "The magical world of botstats, allows you to display your stats within the bots status!",
 	    "DISABLED" : false,
 	    "NAME" : "BotStats",
-	    "INSTALL_MSG" : "Wow! \nYou just installed **BotStats** Cog\n Enjoy!\n\n **Official Server**: https://discord.me/cherryblossombot "
+	    "TAGS" : ["botstats", "stats", "statistics"],
+	    "INSTALL_MSG" : "You just installed **BotStats**! \nThe magical world of botstats, allows you to display your stats within the bots status!\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
 
 
