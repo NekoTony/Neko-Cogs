@@ -5,7 +5,7 @@
 	    "DISABLED" : false,
 	    "NAME" : "BotStats",
 	    "TAGS" : ["botstats", "stats", "statistics"],
-	    "INSTALL_MSG" : "You just installed **BotStats**! \nThe magical world of botstats, allows you to display your stats within the bots status!\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
+	    "INSTALL_MSG" : "You just installed **BotStats.py**! \nThe magical world of botstats, allows you to display your stats within the bots status!\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
 
 
