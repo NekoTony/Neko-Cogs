@@ -6,5 +6,5 @@
 	    "DISABLED" : false,
 	    "NAME" : "Account",
 	    "TAGS" : ["Acconut", "Profile"],
-	    "INSTALL_MSG" : "You just installed **Account**! \nJust an account cog with fields like email, age, gender, and such.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
+	    "INSTALL_MSG" : "You just installed **Account.py**! \nJust an account cog with fields like email, age, gender, and such.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
