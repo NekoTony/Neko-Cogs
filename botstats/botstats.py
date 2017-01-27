@@ -50,7 +50,7 @@ class BotStats:
         Default is 15
         """
 
-        if seconds > 15:
+        if seconds >= 15:
             self.imagenius["SECONDS2LIVE"] = seconds
             dataIO.save_json(self.derp, self.imagenius)
             await self.bot.say("Your bot status will not update every {} seconds! #BOSS".format(seconds))
