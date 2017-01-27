@@ -67,7 +67,7 @@ class BotStats:
                 await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 await self.bot.change_presence(status=None, game=None)
-                break
+                return
         else:
             pass
     
