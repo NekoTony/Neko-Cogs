@@ -4,6 +4,7 @@
 	    "DESCRIPTION" : "Do you play Transformice? This cog allows you to fetch api stats from Transformice so you can get mouse/tribe info in a second.",
 	    "DISABLED" : false,
 	    "NAME" : "Transformice",
-	    "INSTALL_MSG" : "Wow! \nYou just installed **Transformice** Cog\n Enjoy!\n\n **Official Server**: https://discord.me/cherryblossombot "
+	    "TAGS" : ["Atelier801", "transformice", "tfm"],
+	    "INSTALL_MSG" : "You just installed **Transformice.py**! \nDo you play Transformice? This cog allows you to fetch api stats from Transformice so you can get mouse/tribe info in a second.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
 
