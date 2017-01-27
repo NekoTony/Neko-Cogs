@@ -37,18 +37,22 @@ class BotStats:
             await self.botstatz(servers, users)
         else:
             self.imagenius["TOGGLE"] = False
-            await self.bot.change_presence(status=None, game=None)
+            await self.botstatz(servers, users)
             dataIO.save_json(self.derp, self.imagenius)
             await self.bot.say("The botstats have been turned off!")
 
 
     async def botstatz(self, servers, users):    
-        while True:    
-            message = '{}help | {} servers | {} users'.format(self.imagenius["MAINPREFIX"], servers, users)
-            status = list(self.bot.servers)[0].me.status
-            game = discord.Game(name=message)
-            await self.bot.change_presence(status=status, game=game)
-            await asyncio.sleep(10)
+        while True:
+            if self.imagenius["TOGGLE"] is True:
+                message = '{}help | {} servers | {} users'.format(self.imagenius["MAINPREFIX"], servers, users)
+                status = list(self.bot.servers)[0].me.status
+                game = discord.Game(name=message)
+                await self.bot.change_presence(status=status, game=game)
+                await asyncio.sleep(10)
+            else:
+                await self.bot.change_presence(status=None, game=None)
+                break
         else:
             pass
     
