@@ -7,7 +7,7 @@ import os
 import asyncio
 
 class BotStats:
-    "You can display your bot stats in your game status"
+    "You can display your bot stats in your game status..."
     
     def __init__(self, bot):
         self.bot = bot
@@ -33,13 +33,37 @@ class BotStats:
             self.imagenius["TOGGLE"] = True
             self.imagenius["MAINPREFIX"] = ctx.prefix
             dataIO.save_json(self.derp, self.imagenius)
+            prefix = self.imagenius["MAINPREFIX"]
             await self.bot.say("The botstats have been turned on!")
-            await self.botstatz(servers, users)
+            await self.botstatz(servers, users, prefix)
         else:
             self.imagenius["TOGGLE"] = False
-            await self.botstatz(servers, users)
+            prefix = self.imagenius["MAINPREFIX"]
             dataIO.save_json(self.derp, self.imagenius)
             await self.bot.say("The botstats have been turned off!")
+            await self.botstatz(servers, users, prefix)
+
+    @checks.is_owner()
+    @botstats.command(pass_context=True)
+    async def message(self, ctx, *, message):
+        """You can set the way your botstats is set!
+
+
+        {0} = Bot's Prefix
+        {1} = Servers
+        {2} = Total Users
+
+        Default Message: {0}help | {1} servers | {2} users
+        """
+
+        prefix = self.imagenius["MAINPREFIX"]
+        if self.imagenius["TOGGLE"] is True:
+            await self.bot.say("Before you change the message, turn off your bot! `{}botstats toggle`".format(prefix))
+        else:
+            self.imagenius["MESSAGE"] = message
+            dataIO.save_json(self.derp, self.imagenius)
+            await self.bot.say("Congrats, you have set your message to ```{}```".format(message))
+
 
     @checks.is_owner()
     @botstats.command(pass_context=True)
@@ -57,10 +81,11 @@ class BotStats:
         else:
             await self.bot.say("NO, IT CAN'T BE UNDER 15 SECONDS. THE PEOPLE AT DISCORD WILL FREAK....")
 
-    async def botstatz(self, servers, users):    
+    async def botstatz(self, servers, users, prefix):    
         while True:
             if self.imagenius["TOGGLE"] is True:
-                message = '{}help | {} servers | {} users'.format(self.imagenius["MAINPREFIX"], servers, users)
+                botstatus = self.imagenius["MESSAGE"]
+                message = botstatus.format(prefix, servers, users)
                 status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
                 await self.bot.change_presence(status=status, game=game)
@@ -75,8 +100,10 @@ class BotStats:
         if self.imagenius["TOGGLE"] is True:
             servers = str(len(self.bot.servers))
             users = str(len(set(self.bot.get_all_members())))
+            botstatus = self.imagenius["MESSAGE"]
+            prefix = self.imagenius["MAINPREFIX"]
             while True:    
-                message = '{}help | {} servers | {} users'.format(self.imagenius["MAINPREFIX"], servers, users)
+                message = botstatus.format(prefix, servers, users)
                 status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
                 await self.bot.change_presence(status=status, game=game)
@@ -93,13 +120,13 @@ def check_folders():
         os.makedirs("data/botstats")
         print("Finish!")
 
-
 def check_files():
     twentysix = "data/botstats/json.json"
     json = {
         "MAINPREFIX" : "This can be set when starting botstats thru [p]botstats toggle",
         "TOGGLE" : False,
-        "SECONDS2LIVE" : 15
+        "SECONDS2LIVE" : 15,
+        "MESSAGE" : "{0}help | {1} servers | {2} users"
     }
 
     if not dataIO.is_valid_json(twentysix):
