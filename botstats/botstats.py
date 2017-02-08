@@ -89,9 +89,8 @@ class BotStats:
                 botstatus = self.imagenius["MESSAGE"]
                 prefix = self.imagenius["MAINPREFIX"]
                 message = botstatus.format(prefix, servers, users)
-                status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
-                await self.bot.change_presence(status=status, game=game)
+                await self.bot.change_status(game=game)
                 await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 await self.bot.change_presence(status=None, game=None)
@@ -107,9 +106,8 @@ class BotStats:
                 botstatus = self.imagenius["MESSAGE"]
                 prefix = self.imagenius["MAINPREFIX"]
                 message = botstatus.format(prefix, servers, users)
-                status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
-                await self.bot.change_presence(status=status, game=game)
+                await self.bot.change_status(game=game)
                 await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 pass
