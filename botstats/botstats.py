@@ -35,13 +35,13 @@ class BotStats:
             dataIO.save_json(self.derp, self.imagenius)
             prefix = self.imagenius["MAINPREFIX"]
             await self.bot.say("The botstats have been turned on!")
-            await self.botstatz(servers, users, prefix)
+            await self.botstatz()
         else:
             self.imagenius["TOGGLE"] = False
             prefix = self.imagenius["MAINPREFIX"]
             dataIO.save_json(self.derp, self.imagenius)
             await self.bot.say("The botstats have been turned off!")
-            await self.botstatz(servers, users, prefix)
+            await self.botstatz()
 
     @checks.is_owner()
     @botstats.command(pass_context=True)
@@ -81,10 +81,13 @@ class BotStats:
         else:
             await self.bot.say("NO, IT CAN'T BE UNDER 15 SECONDS. THE PEOPLE AT DISCORD WILL FREAK....")
 
-    async def botstatz(self, servers, users, prefix):    
+    async def botstatz(self):    
         while True:
             if self.imagenius["TOGGLE"] is True:
+                servers = str(len(self.bot.servers))
+                users = str(len(set(self.bot.get_all_members())))
                 botstatus = self.imagenius["MESSAGE"]
+                prefix = self.imagenius["MAINPREFIX"]
                 message = botstatus.format(prefix, servers, users)
                 status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
@@ -98,11 +101,11 @@ class BotStats:
     
     async def on_ready(self):
         if self.imagenius["TOGGLE"] is True:
-            servers = str(len(self.bot.servers))
-            users = str(len(set(self.bot.get_all_members())))
-            botstatus = self.imagenius["MESSAGE"]
-            prefix = self.imagenius["MAINPREFIX"]
-            while True:    
+            while True:
+                servers = str(len(self.bot.servers))
+                users = str(len(set(self.bot.get_all_members())))
+                botstatus = self.imagenius["MESSAGE"]
+                prefix = self.imagenius["MAINPREFIX"]
                 message = botstatus.format(prefix, servers, users)
                 status = list(self.bot.servers)[0].me.status
                 game = discord.Game(name=message)
