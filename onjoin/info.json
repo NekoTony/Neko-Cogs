@@ -1,0 +1,9 @@
+{
+	    "AUTHOR" : "NerdieTony",
+	    "SHORT" : "The Onjoin Cog",
+	    "DESCRIPTION" : "Allows you to set a message upon begin joined!",
+	    "DISABLED" : false,
+	    "NAME" : "Onjoin",
+	    "TAGS" : ["joinserver", "message"],
+	    "INSTALL_MSG" : "You just installed **Onjoin.py**! \nAllows you to set a message upon begin joined!.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
+	}
