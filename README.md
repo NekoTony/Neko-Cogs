@@ -1,32 +1,29 @@
-<p align="center">
-  <img src="http://i.imgur.com/OvqOoh0.jpg">
-  <h1 align="center" size="70px">Nerdie-Cogs</h1>
-  <p align="center"><font size="30"> The only TwentySix-Red cogs made out of boredeom, loneliness, and what i think is sweat. </font></p>
-</p>
-<br><br><br>
-<h1 align="center">Cogs</h1>
-<h3 align="center">Fuck.py</h3>
-<p align="center"><img src="https://media.giphy.com/media/TZFmvyDvr3WaQ/giphy.gif"></img></p>
-<p align="center">Fuck is a lovely cog just for the family!! It allows you to create a "Fuck you" statement, and that's it. What was the purpose of <b>fuck.py</b>? THERE IS NONE!!! <br> The cog is perfect for revenge, but horrible at weddings</p>
-<p align="center"><code>~fuck <name></code></p>
-<br><br><br>
+<style>
+.container {
+   height: auto;
+   overflow: hidden;
+}
 
-<h3 align="center">Botstats.py</h3>
-<p align="center">Drum roll please...</p>
-<p align="center"><img src="http://i.imgur.com/BbgL7x3.gif"></img></p>
-<p align="center">Now that's the spirit! Botstats has the ability to display your bots help command, and the number of user and servers that the bot stalks in total.</p>
-<p align="center"><code>~botstats</code></p>
-<br><br><br>
+.right {
+    width: 180px;
+    float: right;
+    background: #aafed6;
+}
 
-<h3 align="center">Transformice.py</h3>
-<p align="center"><img src="https://media.giphy.com/media/MRPnRXOJpzagw/giphy.gif"></img></p>
-<p align="center">Now, i bet you are wondering what is transformice? It's an indie game made by french people, dominated by english people, and has tons of users. <b>Note</b>: You will need a transformice.com acconut for this to work!</p>
-<p align="center"><code>~tfm avatar <username></code></p>
-<p align="center"><code>~tfm mouse <username></code></p>
-<p align="center"><code>~tfm tribe <tribe_name></code></p>
+.left {
+    float: none; /* not needed, just for clarification */
+    background: #e8f6fe;
+    /* the next props are meant to keep this block independent from the other floated one */
+    width: auto;
+    overflow: hidden;
+}
+</style>
+<div class="container">
+    <div class="right">
+        <h1>Click the image to visit the Red Cog Support Server</h1>
+    </div>
+    <div class="left">
+        <p><a href="https://discord.gg/463dJbT"><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></a></p>
+    </div>
+</div>
 
-<h1 align="center">Need help? Found a bug? Got an idea for a cog?</h1>
-<p align="center">Best way to get help is to go to Red's Cog Support Server and ask for help in the <b>#support_nerdie-cogs</b> Channel.</p>
-
-<h1 align="center">Click the image to visit the Red Cog Support Server</h1>
-<p align="center"><a href="https://discord.gg/463dJbT"><img src="http://i.imgur.com/8jC15G5.jpg" width="200" height="200"></a></p>
