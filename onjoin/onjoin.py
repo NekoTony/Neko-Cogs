@@ -112,7 +112,7 @@ class on_join:
         self.loveme["MESSAGE_TITLE"] = msg
         dataIO.save_json(self.derp, self.loveme)
         await self.bot.say("Congrats, you have set your embed message name to ```{}```".format(msg))
-
+    
     @checks.is_owner()
     @joinmsg.command(pass_context=True)
     async def settitle(self, ctx, *, msg):
@@ -128,7 +128,17 @@ class on_join:
         self.loveme["Embt"] = msg
         dataIO.save_json(self.derp, self.loveme)
         await self.bot.say("Congrats, you have set your embed title name to ```{}```".format(msg))
-        await self.mowie(server=ctx.message.server)
+
+    @checks.is_owner()
+    @joinmsg.command(pass_context=True)
+    async def setcolor(self, ctx, *, msg):
+        """Allows you to set the embed color, if it's embed
+
+        Needs to be a color code. Example: 0xFFFFFF 
+        """
+        self.loveme["Embc"] = msg
+        dataIO.save_json(self.derp, self.loveme)
+        await self.bot.say("Congrats, you have set your embed title name to ```{}```".format(msg))
 
     async def mowie(self, server):
         owner = discord.utils.get(self.bot.get_all_members(), id=self.bot.settings.owner)
