@@ -39,9 +39,11 @@ class Q20:
                 userz.append(answer.author.id)
                 picked = picked - 1
             
-            if picked >= 0 or time.time() > time:
+            if picked >= 0 or time =< 0:
                 break
-        
+            
+            time = time - 1
+            
         totalusers = len(userz)
         
         if totalusers > 1:
