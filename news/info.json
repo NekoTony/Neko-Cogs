@@ -3,7 +3,7 @@
 	    "SHORT" : "Create a newsletter to send with everyone else.",
 	    "DESCRIPTION" : "NEWS, GET YA NEWS!!! This cog allows you to send a newsletter to user via pm (If they registered for it, ofc) instead of sending in to the servers where ppl get mad about the announcement",
 	    "DISABLED" : false,
-	    "NAME" : "Newsletter",
+	    "NAME" : "News",
 	    "TAGS" : ["newsletter", "announce", "globalmsg", "news", "announcement"],
 	    "INSTALL_MSG" : "You just installed **Newsletter.py**! \nNEWS, GET YA NEWS!!! This cog allows you to send a newsletter to user via pm (If they registered for it, ofc) instead of sending in to the servers where ppl get mad about the announcement\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
 	}
