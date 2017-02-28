@@ -1,0 +1,9 @@
+{
+	    "AUTHOR" : "NerdieTony",
+	    "SHORT" : "The SelfEmbed Cog",
+	    "DESCRIPTION" : "Changes messages to embed message thru selfbot!",
+	    "DISABLED" : false,
+	    "NAME" : "selfembed",
+	    "TAGS" : ["selfembed", "selfbot", "embed"],
+	    "INSTALL_MSG" : "[THIS COG IS FOR CALEB SELFBOTS ONLY]\nYou just installed **Selfembed.py**! \nChanges messages to embed message thru selfbot!!.\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
+	}
