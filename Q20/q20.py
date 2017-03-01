@@ -1,9 +1,8 @@
-#WORK IN PRGRESS
-
 import discord
 from discord.ext import commands
 import time
 
+#Cog is a work in progress
 class Q20:
     """Play 20 Questions"""
 
@@ -27,28 +26,32 @@ class Q20:
             await self.bot.say("Sorry, but the number you provided must be a number.")
             return
         
-        time = time.time() + 60*5 
         userz = []
-        await self.bot.say("Want to join? Well say `join` to particapet`")
+        await self.bot.say("Want to join? Well say `join` to participate`")
+        timez = time.time() + 300
         while True:
             picked = 10
             answer = await self.bot.wait_for_message(channel=channel)
             
-            if answer.content == "join":
-                #add user to list aka apend
-                userz.append(answer.author.id)
+            user = answer.author
+            if answer.content == "join" and user.id != author.id:
+                userz.append(user.id)
                 picked = picked - 1
+                await self.bot.say("{} has joined the game".format(answer.author))
             
-            if picked >= 0 or time =< 0:
+            if timez <= 0:
+                await self.bot.say("Times up!")
                 break
             
-            time = time - 1
+            timez = timez - 1
             
         totalusers = len(userz)
         
-        if totalusers > 1:
+        if totalusers < 1:
             await self.bot.say("Sorry but you need atleast 1 person to play")
             return
+        else:
+            await self.bot.say(str(userz))
 
 def setup(bot):
     bot.add_cog(Q20(bot))
