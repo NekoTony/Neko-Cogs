@@ -39,7 +39,7 @@ class Q20:
                 picked = picked - 1
                 await self.bot.say("{} has joined the game".format(answer.author))
             
-            if timez <= 0:
+            if  time.time() > timez:
                 await self.bot.say("Times up!")
                 break
             
