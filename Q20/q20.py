@@ -10,7 +10,7 @@ class Q20:
         self.bot = bot
 
     @commands.command(pass_context=True)
-    async def play20Q(self, ctx, questions=None):
+    async def play20(self, ctx, questions=None):
         """Play 20 questions!"""
 
         author = ctx.message.author
