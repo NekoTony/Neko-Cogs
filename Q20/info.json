@@ -1,0 +1,14 @@
+{
+   "AUTHOR":"NerdieTony",
+   "SHORT":"The 20 Questions Cog",
+   "DESCRIPTION":"Allows you to play the popular 20 questions game!",
+   "DISABLED":false,
+   "NAME":"Q20",
+   "TAGS":[
+      "20",
+      "questions",
+      "games",
+      "game"
+   ],
+   "INSTALL_MSG":"You just installed **q20.py**! \nAllows you to play the popular 20 questions game\n\n**Official Cog Support Server:** https://discord.gg/gcCpwGG"
+}
