@@ -17,17 +17,14 @@ class Q20:
         channel = ctx.message.channel
         server = ctx.message.server
 
-        if questions is None:
-            q = 20
-        else:
-            try:
-                q = int(questions)
-            except:
-                await self.bot.say("Sorry, but the number you provided must be an actual number.")
-                return
+        try:
+            q = 20 if not questions else int(questions)
+        except:
+            await self.bot.say("Sorry, but the number you provided must be an actual number.")
+            return
         
         if q > 20:
-            await self.bot.say("The max amount of questions is 20, sorry.")
+            return await self.bot.say("The max amount of questions is 20, sorry.")
             return
 
         userz = []
