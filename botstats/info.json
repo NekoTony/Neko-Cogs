@@ -1,11 +1,13 @@
 {
-	    "AUTHOR" : "NerdieTony",
-	    "SHORT" : "Display BotStats within the status!",
-	    "DESCRIPTION" : "The magical world of botstats, allows you to display your stats within the bots status!",
-	    "DISABLED" : false,
-	    "NAME" : "BotStats",
-	    "TAGS" : ["botstats", "stats", "statistics"],
-	    "INSTALL_MSG" : "You just installed **BotStats.py**! \nThe magical world of botstats, allows you to display your stats within the bots status!\n\n**Offical Cog Support Server:** https://discord.gg/gcCpwGG"
-	}
-
-
+   "AUTHOR":"NerdieTony",
+   "SHORT":"Display BotStats within the status!",
+   "DESCRIPTION":"The magical world of botstats, allows you to display your stats within the bots status!",
+   "DISABLED":false,
+   "NAME":"BotStats",
+   "TAGS":[
+      "botstats",
+      "stats",
+      "statistics"
+   ],
+   "INSTALL_MSG":"You just installed **BotStats.py**! \nThe magical world of botstats, allows you to display your stats within the bots status!\n\n**Official Cog Support Server:** https://discord.gg/gcCpwGG"
+}
