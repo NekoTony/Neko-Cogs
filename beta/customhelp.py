@@ -103,7 +103,7 @@ def check_folders():
         print("Finish!")
 
 def check_files():
-    twentysix = "data/customhelp/wow.json"
+    twentysix = "data/customhelp/settings.json"
     json = {
         "helpMessage" : "Meep, to change help message, say `[p]sethelp setmsg`",
         "helpPrivate" : False,
