@@ -51,8 +51,51 @@ class Customhelp:
             dataIO.save_json(self.weeee, self.tony)
             await self.bot.say("The help message will not be set within the channel it has been said in??!")
           
-
-
+    @checks.is_owner()
+    @sethelp.command(pass_context=True)
+    async def setmsg(self, ctx):
+        """Set the help message"""
+        
+        author = ctx.message.author
+        channel = ctx.message.channel
+        await self.bot.say("Take your time and tell me, what do you want in your help message!")
+        
+        message = await self.bot.wait_for_message(channel=channel, author=author)
+        
+        if message is not None:
+            self.tony["helpMessage"] = message.content
+            dataIO.save_json(self.weeee, self.tony)
+            await self.bot.say("Congrats, the help message has been set to: ```{}```".format(message.content))
+        else:
+            await self.bot.say("There was an error.")
+    
+    @commands.command(pass_context=True)
+    async def help(self, ctx):
+        
+        author = ctx.message.channel
+        
+        if self.tony["helpPrivate"]:
+            channel = author
+        else:
+            channel = ctx.message.channel
+        
+        msg = self.tony["helpMessage"]
+        if self.tony["embedToggle"]:
+            color = self.tony["embedColor"]
+            title = self.tony["embedTitle"]
+            footer = self.tony["embedFooter"]
+            embed = discord.Embed(colour=color, title=title, description=msg)
+            embed.set_footer(text=footer)
+            try:
+                await self.bot.send_message(channel, embed=embed)
+            except discord.HTTPException:
+                await self.bot.say("Sorry, i need embed permissions or couldn't send message.")
+        else:
+            try:
+                await self.bot.send_message(channel, msg)
+            except discord.HTTPException:
+                await self.bot.say("Couldn't send the message.")
+                
 def check_folders():
     if not os.path.exists("data/customhelp"):
         print("Creating the on_join folder, so be patient...")
@@ -62,13 +105,12 @@ def check_folders():
 def check_files():
     twentysix = "data/customhelp/wow.json"
     json = {
-        "helpMessage" : "Meep",
+        "helpMessage" : "Meep, to change help message, say `[p]sethelp setmsg`",
         "helpPrivate" : False,
         "embedColor" : "0xFFFFFF",
         "embedFooter" : "This is your footer!",
         "embedToggle" : False,
         "embedTitle" : "This is your title!",
-        "messageTitle" : "Welcome to {0.name}!"
     }
 
     if not dataIO.is_valid_json(twentysix):
