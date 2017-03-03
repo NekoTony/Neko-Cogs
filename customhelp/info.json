@@ -1,0 +1,13 @@
+{
+   "AUTHOR":"NerdieTony",
+   "SHORT":"Custom Help Command",
+   "DESCRIPTION":"Allows you to create a custom help message, instead of the discord.py origianl one.",
+   "DISABLED":false,
+   "NAME":"Customhelp",
+   "TAGS":[
+      "help",
+      "customhelp",
+      "help message"
+   ],
+   "INSTALL_MSG":"You just installed **customhelp.py**! \nAllows you to create a custom help message, instead of the discord.py origianl one.\n\n**Official Cog Support Server:** https://discord.gg/gcCpwGG"
+}
