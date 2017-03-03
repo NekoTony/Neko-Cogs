@@ -4,7 +4,6 @@ from discord.ext import commands
 from cogs.utils.dataIO import dataIO
 from __main__ import send_cmd_help
 import os
-import asyncio
 
 class on_join:
     """Allows you to set your own server on_join message!"""
