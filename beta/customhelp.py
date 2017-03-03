@@ -72,7 +72,7 @@ class Customhelp:
     @commands.command(pass_context=True)
     async def help(self, ctx):
         
-        author = ctx.message.channel
+        author = ctx.message.author
         
         if self.tony["helpPrivate"]:
             channel = author
@@ -81,7 +81,7 @@ class Customhelp:
         
         msg = self.tony["helpMessage"]
         if self.tony["embedToggle"]:
-            color = self.tony["embedColor"]
+            color = int(self.tony["embedColor"])
             title = self.tony["embedTitle"]
             footer = self.tony["embedFooter"]
             embed = discord.Embed(colour=color, title=title, description=msg)
