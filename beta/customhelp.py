@@ -81,7 +81,10 @@ class Customhelp:
         
         msg = self.tony["helpMessage"]
         if self.tony["embedToggle"]:
-            color = int(self.tony["embedColor"], 16)
+            try:
+                color = int(self.tony["embedColor"], 16)
+            except:
+                color = 0x898a8b
             title = self.tony["embedTitle"]
             footer = self.tony["embedFooter"]
             embed = discord.Embed(colour=color, title=title, description=msg)
