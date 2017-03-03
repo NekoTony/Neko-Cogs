@@ -87,6 +87,9 @@ class Customhelp:
                 color = 0x898a8b
             title = self.tony["embedTitle"]
             footer = self.tony["embedFooter"]
+            auth = self.tony["embedAuthor"]
+            if auth:
+                wow.set_author(name=self.bot.user.name, url=self.bot.user.avatar_url)
             embed = discord.Embed(colour=color, title=title, description=msg)
             embed.set_footer(text=footer)
             try:
@@ -114,6 +117,7 @@ def check_files():
         "embedFooter" : "This is your footer!",
         "embedToggle" : False,
         "embedTitle" : "This is your title!",
+        "embedAuthor" : False
     }
 
     if not dataIO.is_valid_json(twentysix):
