@@ -150,11 +150,14 @@ class on_join:
             if self.loveme["EMB"]:
                 try:
                     title = self.loveme["Embt"].format(server, bota, owner)
-                    color = self.loveme["Embc"]
                     footer = self.loveme["Embf"].format(server, bota, owner)
                     auth = self.loveme["Emba"]
                     msgname = self.loveme["MESSAGE_TITLE"].format(server, bota, owner)
-                    wow=discord.Embed(title=title, color=0x898a8b)
+                    try:
+                        color = int(self.loveme["Embc"], 16)
+                    except:
+                        color = 0x898a8b
+                    wow=discord.Embed(title=title, color=color)
                     if auth:
                         wow.set_author(name=bota.user.name, url=bota.user.avatar_url)
                     wow.add_field(name=msgname, value=send)
