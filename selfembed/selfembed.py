@@ -11,7 +11,7 @@ class SelfEmbed:
     
     def __init__(self, bot):
         self.bot = bot
-        self.cakeme = "data/selfembed/wow.json"
+        self.cakeme = "data/selfembed/derp.json"
         self.eee = dataIO.load_json(self.cakeme)
     
     @checks.is_owner()
