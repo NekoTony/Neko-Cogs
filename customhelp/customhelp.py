@@ -25,6 +25,20 @@ class Customhelp:
     
     @checks.is_owner()
     @sethelp.command(pass_context=True)
+    async def embedauthor(self, ctx):
+        """Allows you to decide if you want the bot in the embed message."""
+        
+        if self.tony["embedAuthor"] is False:
+            self.tony["embedAuthor"] = True
+            dataIO.save_json(self.weeee, self.tony)
+            await self.bot.say("The author for embed have been turned on!")
+        else:
+            self.tony["embedAuthor"] = False
+            dataIO.save_json(self.weeee, self.tony)
+            await self.bot.say("The author for embed have been turned off!")
+
+    @checks.is_owner()
+    @sethelp.command(pass_context=True)
     async def embedtoggle(self, ctx):
         """Turn on or off the ability to make the help mesaged embed"""
         
@@ -66,6 +80,60 @@ class Customhelp:
             self.tony["helpMessage"] = message.content
             dataIO.save_json(self.weeee, self.tony)
             await self.bot.say("Congrats, the help message has been set to: ```{}```".format(message.content))
+        else:
+            await self.bot.say("There was an error.")
+
+    @checks.is_owner()
+    @sethelp.command(pass_context=True)
+    async def settitle(self, ctx):
+        """Set the help embed title"""
+        
+        author = ctx.message.author
+        channel = ctx.message.channel
+        await self.bot.say("Take your time and tell me, what do you want in your help embed title!")
+        
+        message = await self.bot.wait_for_message(channel=channel, author=author)
+        
+        if message is not None:
+            self.tony["embedTitle"] = message.content
+            dataIO.save_json(self.weeee, self.tony)
+            await self.bot.say("Congrats, the help embed title has been set to: ```{}```".format(message.content))
+        else:
+            await self.bot.say("There was an error.")
+
+    @checks.is_owner()
+    @sethelp.command(pass_context=True)
+    async def setfooter(self, ctx):
+        """Set the help embed footer"""
+        
+        author = ctx.message.author
+        channel = ctx.message.channel
+        await self.bot.say("Take your time and tell me, what do you want in your help embed footer!")
+        
+        message = await self.bot.wait_for_message(channel=channel, author=author)
+        
+        if message is not None:
+            self.tony["embedFooter"] = message.content
+            dataIO.save_json(self.weeee, self.tony)
+            await self.bot.say("Congrats, the help embed footer has been set to: ```{}```".format(message.content))
+        else:
+            await self.bot.say("There was an error.")
+
+    @checks.is_owner()
+    @sethelp.command(pass_context=True)
+    async def setcolor(self, ctx):
+        """Set the help embed color"""
+        
+        author = ctx.message.author
+        channel = ctx.message.channel
+        await self.bot.say("Take your time and tell me, what do you want in your help embed color! Make sure it's like 0xfffff or 0x000000 for assign colors or else it won't work.")
+        
+        message = await self.bot.wait_for_message(channel=channel, author=author)
+        
+        if message is not None:
+            self.tony["embedColor"] = message.content
+            dataIO.save_json(self.weeee, self.tony)
+            await self.bot.say("Congrats, the help embed color has been set to: ```{}```".format(message.content))
         else:
             await self.bot.say("There was an error.")
     
