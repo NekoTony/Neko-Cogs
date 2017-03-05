@@ -16,7 +16,18 @@ class SelfEmbed:
     
     @checks.is_owner()
     @commands.command(pass_context=True)
-    async def embedtoggle(self, ctx):
+    async def setowner(self, ctx):
+        """You need to set owner before embeds can work"""
+
+        author = ctx.message.author
+        self.eee["id"] = author.id
+        dataIO.save_json(self.cakeme, self.eee)
+        await self.bot.say("Ok, **{}** has been messages as embed.".format(author.display_name))
+
+
+    @checks.is_owner()
+    @commands.command()
+    async def embedtoggle(self):
         """Allows you to turn on SelfEmbed on and off for realz"""
         
         if self.eee["toggle"] is False:
@@ -30,9 +41,10 @@ class SelfEmbed:
 
     async def on_message(self, message):
         author = message.author
-        if self.eee["toggle"] and author.id == self.bot.owner.user.id:
+        print("Wow")
+        if self.eee["toggle"] and author.id == self.eee["id"]:
             embed=discord.Embed(description=message.content, color=author.color)
-            await bot.edit_message(message, new_content=" ", embed=embed)
+            await self.bot.edit_message(message, new_content=" ", embed=embed)
 
 
 def check_folders():
@@ -44,7 +56,8 @@ def check_folders():
 def check_files():
     twentysix = "data/selfembed/derp.json"
     json = {
-        "toggle" : False
+        "toggle" : False,
+        "id" : "You need to add your user.id"
     }
 
     if not dataIO.is_valid_json(twentysix):
