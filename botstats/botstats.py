@@ -84,13 +84,14 @@ class BotStats:
     async def botstatz(self):    
         while True:
             if self.imagenius["TOGGLE"] is True:
+                status = self.get_status()
                 servers = str(len(self.bot.servers))
                 users = str(len(set(self.bot.get_all_members())))
                 botstatus = self.imagenius["MESSAGE"]
                 prefix = self.imagenius["MAINPREFIX"]
                 message = botstatus.format(prefix, servers, users)
                 game = discord.Game(name=message)
-                await self.bot.change_presence(game=game)
+                await self.bot.change_presence(game=game, status=status)
                 await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 await self.bot.change_presence(status=None, game=None)
@@ -101,18 +102,27 @@ class BotStats:
     async def on_ready(self):
         if self.imagenius["TOGGLE"] is True:
             while True:
+                status = self.get_status()
                 servers = str(len(self.bot.servers))
                 users = str(len(set(self.bot.get_all_members())))
                 botstatus = self.imagenius["MESSAGE"]
                 prefix = self.imagenius["MAINPREFIX"]
                 message = botstatus.format(prefix, servers, users)
                 game = discord.Game(name=message)
-                await self.bot.change_presence(game=game)
+                await self.bot.change_presence(game=game, status=status)
                 await asyncio.sleep(self.imagenius["SECONDS2LIVE"])
             else:
                 pass
         else:
             pass
+    
+    def get_status(self):
+        for server in self.bot.servers:
+            member = server.me
+            break
+        status = member.status
+        return status
+        
 
 
 def check_folders():
