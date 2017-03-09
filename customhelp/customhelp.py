@@ -5,7 +5,6 @@ from cogs.utils.dataIO import dataIO
 from __main__ import send_cmd_help
 import os
 
-#I like trains
 class Customhelp:
     """Allows you to set your own server on_join message!"""
     
@@ -156,9 +155,9 @@ class Customhelp:
             title = self.tony["embedTitle"]
             footer = self.tony["embedFooter"]
             auth = self.tony["embedAuthor"]
-            if auth:
-                wow.set_author(name=self.bot.user.name, url=self.bot.user.avatar_url)
             embed = discord.Embed(colour=color, title=title, description=msg)
+            if auth:
+                embed.set_author(name=self.bot.user.name, url=self.bot.user.avatar_url)
             embed.set_footer(text=footer)
             try:
                 await self.bot.send_message(channel, embed=embed)
