@@ -117,13 +117,17 @@ class BotStats:
             pass
     
     def get_status(self):
+        typesofstatus = {
+            "idle" : discord.Status.idle,
+            "dnd" : discord.Status.dnd,
+            "online" : discord.Status.online, 
+            "invisible" : discord.Status.invisible
+        }
         for server in self.bot.servers:
             member = server.me
             break
         status = member.status
-        typesofstatus = {"idle" : discord.Status.idle, "dnd" : discord.Status.dnd,
-        "online" : discord.Status.online, "invisible" : discord.Status.invisible}
-        status = typesofstatus.get(status)
+        status = typesofstatus.get(str(status))
         return status
         
 
