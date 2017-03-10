@@ -2,6 +2,7 @@ import discord
 from .utils import checks
 from discord.ext import commands
 from cogs.utils.dataIO import dataIO
+from .utils.chat_formatting import pagify
 from __main__ import send_cmd_help
 import os
 
@@ -78,7 +79,9 @@ class Customhelp:
         if message is not None:
             self.tony["helpMessage"] = message.content
             dataIO.save_json(self.weeee, self.tony)
-            await self.bot.say("Congrats, the help message has been set to: ```{}```".format(message.content))
+            await self.bot.say("Congrats, the help message has been set to:")
+            for page in pagify(message):
+                await self.bot.say(channel, page)
         else:
             await self.bot.say("There was an error.")
 
@@ -152,20 +155,22 @@ class Customhelp:
                 color = int(self.tony["embedColor"], 16)
             except:
                 color = 0x898a8b
-            title = self.tony["embedTitle"]
-            footer = self.tony["embedFooter"]
-            auth = self.tony["embedAuthor"]
-            embed = discord.Embed(colour=color, title=title, description=msg)
-            if auth:
-                embed.set_author(name=self.bot.user.name, url=self.bot.user.avatar_url)
-            embed.set_footer(text=footer)
-            try:
-                await self.bot.send_message(channel, embed=embed)
-            except discord.HTTPException:
-                await self.bot.say("Sorry, i need embed permissions or couldn't send message.")
+            for page in pagify(msg):
+                title = self.tony["embedTitle"]
+                footer = self.tony["embedFooter"]
+                auth = self.tony["embedAuthor"]
+                embed = discord.Embed(colour=color, title=title, description=page)
+                if auth:
+                    embed.set_author(name=self.bot.user.name, url=self.bot.user.avatar_url)
+                embed.set_footer(text=footer)
+                try:
+                    await self.bot.send_message(channel, embed=embed)
+                except discord.HTTPException:
+                    await self.bot.say("Sorry, i need embed permissions or couldn't send message.")
         else:
             try:
-                await self.bot.send_message(channel, msg)
+                for page in pagify(msg):
+                    await self.bot.send_message(channel, page)
             except discord.HTTPException:
                 await self.bot.say("Couldn't send the message.")
                 
