@@ -121,6 +121,9 @@ class BotStats:
             member = server.me
             break
         status = member.status
+        typesofstatus = {"idle" : discord.Status.idle, "dnd" : discord.Status.dnd,
+        "online" : discord.Status.online, "invisible" : discord.Status.invisible}
+        status = typesofstatus.get(status)
         return status
         
 
