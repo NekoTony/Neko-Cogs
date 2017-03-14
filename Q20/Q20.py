@@ -54,7 +54,7 @@ class Q20:
             await self.bot.say("Sorry but you need atleast 1 person to play.")
             return
 
-        await self.bot.send_message(author, "Well there bud, you got {} people joining your game. Now let me ask you, what do you want people to guess too".format(totalusers))
+        await self.bot.send_message(author, "Well there bud, you got {} people joining your game. Now let me ask you, what is the theme?".format(totalusers))
         answer = await self.bot.wait_for_message(author=author, timeout=120)
 
         if answer is None:
