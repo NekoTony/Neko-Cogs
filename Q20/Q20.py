@@ -88,13 +88,17 @@ class Q20:
 
             await self.bot.say("{}, would you like to ask a `question` or `guess`.".format(user.mention))
             saying = await self.bot.wait_for_message(author=user, timeout=120)
-
-            if saying.content.lower() == "question":
+            
+            if saying is None:
+                await self.bot.say("You took too long to respond")
+            elif saying.content.lower() == "question":
                 await self.bot.say("Ok then, what's your question?")
                 question = await self.bot.wait_for_message(author=user, timeout=120)
                 await self.bot.say("Kool! {}, you can only reply with `yes`,`no`,`sometimes`, or `idk`. So, what is it??".format(author.mention))
                 tf = await self.bot.wait_for_message(author=author, timeout=120)
-                if tf.content.lower() in ("yes", "y"):
+                if tf is None:
+                    await self.bot.say("Sorry, but your time is up!")
+                elif tf.content.lower() in ("yes", "y"):
                     add = '{} asked the question "{}" and got the answer was <{}>'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
                     q = q - 1
@@ -110,8 +114,6 @@ class Q20:
                     add = '{} asked the question "{}" and got the answer was <{}>'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
                     q = q - 1
-                elif tf is None:
-                    await self.bot.say("Sorry, but your time is up!")
             elif saying.content.lower() == "guess":
                 await self.bot.say("Ok, what is your guess?")
                 guess = await self.bot.wait_for_message(author=user, timeout=120)
@@ -127,8 +129,6 @@ class Q20:
                     quz.append(add)
                     q = q - 1
 
-            elif saying is None:
-                await self.bot.say("You took too long to respond")
             else:
                 await self.bot.say("Sorry but you must either choosed guess or question. Your turn has been skipped.")
 
