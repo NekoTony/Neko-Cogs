@@ -7,43 +7,32 @@ import os
 import asyncio
 
 class SelfEmbed:
-    """SELF BOT ONLY - Change messages to embedz"""
+    """Change messages to an embed for selfbots..."""
     
     def __init__(self, bot):
         self.bot = bot
-        self.cakeme = "data/selfembed/derp.json"
-        self.eee = dataIO.load_json(self.cakeme)
+        self.embed = "data/selfembed/toggle.json"
+        self.toggle = dataIO.load_json(self.embed)
     
     @checks.is_owner()
     @commands.command(pass_context=True)
-    async def setowner(self, ctx):
-        """You need to set owner before embeds can work"""
-
-        author = ctx.message.author
-        self.eee["id"] = author.id
-        dataIO.save_json(self.cakeme, self.eee)
-        await self.bot.say("Ok, **{}** has been messages as embed.".format(author.display_name))
-
-
-    @checks.is_owner()
-    @commands.command()
-    async def embedtoggle(self):
+    async def embedtoggle(self, ctx):
         """Allows you to turn on SelfEmbed on and off for realz"""
         
-        if self.eee["toggle"] is False:
-            self.eee["toggle"] = True
-            dataIO.save_json(self.cakeme, self.eee)
+        if self.toggle["toggle"] is False:
+            self.toggle["toggle"] = True
+            dataIO.save_json(self.embed, self.toggle)
             await self.bot.say("All messages will be embed now!")
         else:
-            self.eee["toggle"] = False
-            dataIO.save_json(self.cakeme, self.eee)
+            self.toggle["toggle"] = False
+            dataIO.save_json(self.embed, self.toggle)
             await self.bot.say("All messages will not be embed now!")
 
     async def on_message(self, message):
         author = message.author
-        if self.eee["toggle"] and author.id == self.eee["id"]:
+        if self.toggle["toggle"] and author.id == self.bot.user.id:
             embed=discord.Embed(description=message.content, color=author.color)
-            await self.bot.edit_message(message, new_content=" ", embed=embed)
+            await bot.edit_message(message, new_content=" ", embed=embed)
 
 
 def check_folders():
@@ -53,18 +42,19 @@ def check_folders():
         print("Finish!")
 
 def check_files():
-    twentysix = "data/selfembed/derp.json"
+    directory = "data/selfembed/toggle.json"
     json = {
-        "toggle" : False,
-        "id" : "You need to add your user.id"
+        "toggle" : False
     }
 
-    if not dataIO.is_valid_json(twentysix):
-        print("Derp Derp Derp...")
-        dataIO.save_json(twentysix, json)
-        print("Created derp.json!")
+    if not dataIO.is_valid_json(directory):
+        dataIO.save_json(directory, json)
+        print("Created toggle.json!")
 
 def setup(bot):
-    check_folders()
-    check_files()
-    bot.add_cog(SelfEmbed(bot))
+    if bot.settings.self_bot:
+        check_folders()
+        check_files()
+        bot.add_cog(SelfEmbed(bot))
+    else:
+        print("Sorry, but this cog is for selfbots only..")
