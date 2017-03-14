@@ -52,10 +52,7 @@ class Q20:
         
         if totalusers <= 0:
             await self.bot.say("Sorry but you need atleast 1 person to play.")
-            userz = []
             return
-        else:
-            await self.bot.say(str(userz))
 
         await self.bot.send_message(author, "Well there bud, you got {} people joining your game. Now let me ask you, what do you want people to guess too".format(totalusers))
         answer = await self.bot.wait_for_message(author=author, timeout=120)
