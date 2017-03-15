@@ -35,7 +35,6 @@ class Q20:
         userz = []
         await self.bot.say("Want to join? Well say `join` to participate in this round! Total Questions: {}".format(questions))
         timez = self.q20["time"]
-        starttime = 0
         while True:
             answer = await self.bot.wait_for_message(channel=channel)
             picked = self.q20["picked"]
@@ -45,7 +44,7 @@ class Q20:
                 if user.id not in userz:
                     userz.append(user)
             
-            if starttime == timez:
+            if timez == 0:
                 await self.bot.say("Times up!")
                 break
             
@@ -54,7 +53,7 @@ class Q20:
                 break
             
             time.sleep(1)
-            starttime = starttime + 1
+            timez = timez - 1
 
         userz = sample(userz, len(userz))
 
@@ -81,13 +80,13 @@ class Q20:
 
         await self.bot.say("Hey Guys! Let's begin {} questions! The theme is **{}**".format(questions, theme.title()))
         quz = []
+        string = "No questions Yet"
         while True:
-            if questions <= 0:
+            if questions == 0:
                 await self.bot.say("Questions are done, time for final guesses!")
                 break
             
             user = userz[0]
-            print(userz)
             await self.bot.say("{}, would you like to ask a `question` or `guess`.".format(user.mention))
             saying = await self.bot.wait_for_message(author=user, timeout=120)
             
@@ -142,14 +141,8 @@ class Q20:
             else:
                 await self.bot.say("Sorry but you must either choosed guess or question. Your turn has been skipped.")
 
-            print(userz)
-            
-            try:
-                string = string
-                string = "\n".join(quz)
-                await self.bot.say("List of Questions:\n```{}```\n{} questions left!".format(string, questions))
-            except:
-                pass
+            string = "\n".join(quz)
+            await self.bot.say("List of Questions:\n```{}```\n{} questions left!".format(string, questions))
 
         maxfg = self.q20["maxfg"]
         count = 0
