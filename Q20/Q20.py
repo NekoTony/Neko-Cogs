@@ -93,6 +93,7 @@ class Q20:
             
             if saying is None:
                 await self.bot.say("You took too long to respond")
+                userz.append(userz.pop(userz.index(userz[0])))
             elif saying.content.lower() == "question":
                 await self.bot.say("Ok then, what's your question?")
                 question = await self.bot.wait_for_message(author=user, timeout=120)
