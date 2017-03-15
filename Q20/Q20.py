@@ -88,16 +88,16 @@ class Q20:
             
             user = userz[0]
             await self.bot.say("{}, would you like to ask a `question` or `guess`.".format(user.mention))
-            saying = await self.bot.wait_for_message(author=user, timeout=120)
+            saying = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
             
             if saying is None:
                 await self.bot.say("You took too long to respond")
                 userz.append(userz.pop(userz.index(userz[0])))
             elif saying.content.lower() == "question":
                 await self.bot.say("Ok then, what's your question?")
-                question = await self.bot.wait_for_message(author=user, timeout=120)
+                question = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
                 await self.bot.say("Kool! {}, you can only reply with `yes`,`no`,`sometimes`, or `idk`. So, what is it??".format(author.mention))
-                tf = await self.bot.wait_for_message(author=author, timeout=120)
+                tf = await self.bot.wait_for_message(author=author, timeout=self.q20["time"])
                 if tf is None:
                     await self.bot.say("Sorry, but your time is up!")
                     userz.append(userz.pop(userz.index(userz[0])))
@@ -123,7 +123,7 @@ class Q20:
                     questions = questions - 1
             elif saying.content.lower() == "guess":
                 await self.bot.say("Ok, what is your guess?")
-                guess = await self.bot.wait_for_message(author=user, timeout=120)
+                guess = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
 
                 if guess.content.lower() == ans.lower():
                     await self.bot.say("{}, you got it right!".format(user.display_name))
