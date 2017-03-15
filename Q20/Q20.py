@@ -186,8 +186,8 @@ def check_files():
         "maxq" : 20,
         "time" : 160,
         "amount" : 150,
-        "maxfg" : 1,
-        "picked" : 2,
+        "maxfg" : 3,
+        "picked" : 15,
     }
 
     if not dataIO.is_valid_json(twentysix):
