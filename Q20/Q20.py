@@ -155,7 +155,7 @@ class Q20:
         userz = sample(userz, len(userz))
         if maxfg != 0:
             for x in userz:
-                user = server.get_member(x)
+                user = x
                 await self.bot.say("What is your final guess, {}?".format(user.mention))
                 zzz = await self.bot.wait_for_message(author=user)
 
