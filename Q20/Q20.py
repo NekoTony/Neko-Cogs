@@ -32,10 +32,10 @@ class Q20:
             return await self.bot.say("The max amount of questions is {}, sorry.".format(self.q20["maxq"]))
             return
 
-        userz = []
+
         await self.bot.say("Want to join? Well say `join` to participate in this round! Total Questions: {}".format(questions))
         timez = self.q20["time"]
-        answer = await self.bot.wait_for_message(channel=channel, timeout=timez, check=self.check2)
+        userz = await self.bot.wait_for_message(channel=channel, timeout=timez, check=self.check2)
 
         userz = sample(userz, len(userz))
 
@@ -151,6 +151,7 @@ class Q20:
         return msg.channel.is_private
     
     async def check2(self, msg):
+        userz = []
         picked = self.q20["picked"]
         user = msg.author
             
