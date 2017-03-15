@@ -147,22 +147,19 @@ class Q20:
                     await self.bot.say("Seems like no one got it! The answer was **{}**".format(ans.title()))
                     return
     
-    def check(self, msg):
-        return msg.channel.is_private
-    
-    async def check2(self, msg):
+    def check2(self, msg):
         userz = []
         picked = self.q20["picked"]
         user = msg.author
-            
-        if answer.content.lower() == "join":
+        if msg.content.lower() == "join":
             if user.id not in userz:
                 userz.append(user)
-                await self.bot.say("{} has joined.".format(user.display_name)
-
+        
         if len(userz) == picked:
-            await self.bot.say("Max characters has joined!")
             return userz
+    
+    def check(self, msg):
+        return msg.channel.is_private
     
 def check_folders():
     if not os.path.exists("data/q20"):
