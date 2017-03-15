@@ -147,13 +147,13 @@ class Q20:
                     await self.bot.say("Seems like no one got it! The answer was **{}**".format(ans.title()))
                     return
     
-    def check2(self, msg):
-        userz = []
+    async def check2(self, msg): #Still working on it...
         picked = self.q20["picked"]
         user = msg.author
-        if msg.content.lower() == "join":
+        if msg.content.lower() == "join" and :
             if user.id not in userz:
                 userz.append(user)
+                await self.bot.say("Has joined")
         
         if len(userz) == picked:
             return userz
