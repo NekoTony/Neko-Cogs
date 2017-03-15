@@ -35,25 +35,7 @@ class Q20:
         userz = []
         await self.bot.say("Want to join? Well say `join` to participate in this round! Total Questions: {}".format(questions))
         timez = self.q20["time"]
-        while True:
-            answer = await self.bot.wait_for_message(channel=channel)
-            picked = self.q20["picked"]
-            user = answer.author
-            
-            if answer.content.lower() == "join" and user.id != author.id:
-                if user.id not in userz:
-                    userz.append(user)
-            
-            if timez == 0:
-                await self.bot.say("Times up!")
-                break
-            
-            if len(userz) == picked:
-                await self.bot.say("Max characters has joined!")
-                break
-            
-            time.sleep(1)
-            timez = timez - 1
+        answer = await self.bot.wait_for_message(channel=channel, timeout=timez, check=self.check2)
 
         userz = sample(userz, len(userz))
 
@@ -167,7 +149,20 @@ class Q20:
     
     def check(self, msg):
         return msg.channel.is_private
+    
+    async def check2(self, msg):
+        picked = self.q20["picked"]
+        user = msg.author
+            
+        if answer.content.lower() == "join":
+            if user.id not in userz:
+                userz.append(user)
+                await self.bot.say("{} has joined.".format(user.display_name)
 
+        if len(userz) == picked:
+            await self.bot.say("Max characters has joined!")
+            return userz
+    
 def check_folders():
     if not os.path.exists("data/q20"):
         print("Creating the Q20 folder, so be patient...")
