@@ -25,7 +25,7 @@ class Q20:
 
     @checks.is_owner()
     @twentyq.command(pass_context=True)
-    async def setime(self, ctx, timeout):
+    async def settime(self, ctx, timeout):
         """Set the timeout limit. Make sure it's in seconds"""
 
         try:
@@ -35,7 +35,7 @@ class Q20:
         
         self.q20["time"] = int(timeout)
         dataIO.save_json(self.q, self.q20)
-        await self.bot.say("The timeout limit has been set to {}.".format(timeout))
+        await self.bot.say("The timeout limit has been set to {} seconds.".format(timeout))
 
     @checks.is_owner()
     @twentyq.command(pass_context=True)
