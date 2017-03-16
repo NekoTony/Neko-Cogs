@@ -36,7 +36,7 @@ class SelfEmbed:
             color = 0x585858
         if self.toggle["toggle"] and author.id == self.bot.user.id:
             embed=discord.Embed(description=message.content, color=color)
-            await bot.edit_message(message, new_content=" ", embed=embed)
+            await self.bot.edit_message(message, new_content=" ", embed=embed)
 
 
 def check_folders():
