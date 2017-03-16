@@ -3,6 +3,7 @@ from discord.ext import commands
 import time
 from random import choice, sample 
 import os
+from __main__ import send_cmd_help
 from .utils.dataIO import dataIO
 from .utils import checks
 
