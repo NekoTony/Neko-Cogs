@@ -30,8 +30,12 @@ class SelfEmbed:
 
     async def on_message(self, message):
         author = message.author
+        try:
+            color = author.color
+        except:
+            color = None
         if self.toggle["toggle"] and author.id == self.bot.user.id:
-            embed=discord.Embed(description=message.content, color=author.color)
+            embed=discord.Embed(description=message.content, color=color)
             await bot.edit_message(message, new_content=" ", embed=embed)
 
 
