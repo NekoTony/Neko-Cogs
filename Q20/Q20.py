@@ -260,12 +260,11 @@ class Q20:
     async def on_message(self, message):
         channel = message.channel
         global userz
-        user = message.author
-        if msg.content.lower() == "join":
-            if user in userz[channel.id]:
-                await self.bot.send_message(channel, "{}, you have already joined.".format(user))
-            else:
+        author = message.author
+        if message.content.lower() == "join":
+            if author not in userz[channel.id]:
                 await self.bot.send_message(channel, "{} has joined!".format(user))
+                
     
         
 def check_folders():
