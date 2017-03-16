@@ -243,7 +243,7 @@ class Q20:
         if channel.id not in userz:
             userz[channel.id] = []
         if msg.content.lower() == "join":
-            if user.id not in userz[channel.id]:
+            if user not in userz[channel.id]:
                 userz[channel.id].append(user)
                 print("{} has joined!".format(user))
 
