@@ -260,7 +260,7 @@ class Q20:
     async def on_message(self, message):
         channel = message.channel
         global userz
-        user = message.user
+        user = message.author
         if msg.content.lower() == "join":
             if user in userz[channel.id]:
                 await self.bot.send_message(channel, "{}, you have already joined.".format(user))
