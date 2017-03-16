@@ -262,7 +262,7 @@ class Q20:
         global userz
         author = message.author
         if message.content.lower() == "join":
-            if author not in userz[channel.id]:
+            if author in userz[channel.id]:
                 await self.bot.send_message(channel, "{} has joined!".format(user))
                 
     
