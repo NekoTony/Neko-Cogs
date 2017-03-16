@@ -162,11 +162,15 @@ class Q20:
             elif saying.content.lower() == "question":
                 await self.bot.say("Ok then, what's your question? Make sure it's a yes or no question only.")
                 question = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
+                if question is None:
+                    await self.bot.say("{} took too long to answer a question, next person.")
+                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    continue
                 await self.bot.say("Kool! {}, you can only reply with `yes`,`no`,`sometimes`, or `idk`. So, what is it??".format(author.mention))
                 tf = await self.bot.wait_for_message(author=author, timeout=self.q20["time"])
                 if tf is None:
-                    await self.bot.say("Sorry, but your time is up!")
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    await self.bot.say("Sorry, but the {} took too long to reply, should we try it again?!".format(author))
+                    continue
                 elif tf.content.lower() in ("yes", "y"):
                     add = '{} asked the question "{}" and got the answer was "{}".'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
@@ -191,13 +195,13 @@ class Q20:
                 await self.bot.say("Ok, what is your guess?")
                 guess = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
 
-                if guess.content.lower() == ans.lower():
+                if guess is None:
+                    await self.bot.say("You took too long to respond.")
+                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                elif guess.content.lower() == ans.lower():
                     await self.bot.say("{}, you got it right!".format(user.display_name))
                     del userz[channel.id]
                     return
-                elif guess is None:
-                    await self.bot.say("You took too long to respond.")
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
                 else:
                     await self.bot.say("Sorry, but that guess was incorrect.")
                     add = "{} guessed <{}>".format(user.display_name, guess.content)
@@ -252,6 +256,17 @@ class Q20:
     
     def check(self, msg):
         return msg.channel.is_private
+    
+    async def on_message(self, message):
+        channel = message.channel
+        global userz
+        user = message.user
+        if channel.id not in userz:
+            return
+        if msg.content.lower() == "join":
+            if user not in userz[channel.id]:
+                await self.bot.say("{} has joined!".format(user))
+    
         
 def check_folders():
     if not os.path.exists("data/q20"):
