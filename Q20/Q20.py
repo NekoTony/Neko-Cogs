@@ -261,11 +261,9 @@ class Q20:
         channel = message.channel
         global userz
         user = message.user
-        if channel.id not in userz:
-            return
         if msg.content.lower() == "join":
             if user not in userz[channel.id]:
-                await self.bot.say("{} has joined!".format(user))
+                await self.bot.send_message(channel, "{} has joined!".format(user))
     
         
 def check_folders():
