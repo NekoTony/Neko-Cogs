@@ -54,7 +54,11 @@ class PressF:
         else:
             amount = len(messagem[channel.id]) - 1
         
-        await self.bot.send_message(channel, "**{}** ppl has payed respects to **{}**".format(amount, answer))
+        if user is None:
+            await self.bot.send_message(channel, "**{}** ppl has payed respects to **{}**".format(amount, answer))
+        else:
+            await self.bot.send_message(channel, "**{}** ppl has payed respects to **{}**".format(amount, user.mention))
+        
         if react:
             del messager[channel.id]
         else:
