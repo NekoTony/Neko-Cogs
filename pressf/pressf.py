@@ -12,7 +12,7 @@ class PressF:
         self.bot = bot
 
     @commands.command(pass_context=True, no_pm=True)
-    async def pressf(self, ctx):
+    async def pressf(self, ctx, user : discord.User=None):
         """Pay Respects by pressing f"""
 
         author = ctx.message.author
@@ -21,14 +21,19 @@ class PressF:
         global messagem
         if channel.id in messager or channel.id in messagem:
             return await self.bot.send_message(channel, "Opps, can only pay respects if i'm not already paying respects in a channel. Wait till i'm done.")
-        await self.bot.send_message(channel, "What do you want to pay respects to?")
-        message = await self.bot.wait_for_message(author=author, timeout=120, channel=channel)
+        
+        if user is None:
+            await self.bot.send_message(channel, "What do you want to pay respects to?")
+            message = await self.bot.wait_for_message(author=author, timeout=120, channel=channel)
 
-        if message is None:
-            return await self.bot.say("You took too long to reply.")
-        else:
+            if message is None:
+                return await self.bot.say("You took too long to reply.")
+        
             answer = message.content
             msg = "Everyone, let's pay respects to **{}**! Press f reaction on the this message to pay respects.".format(answer)
+        
+        else:
+            msg = "Everyone, let's pay respects to **{}**! Press f reaction on the this message to pay respects.".format(user.mention)
 
         message = await self.bot.send_message(channel, msg)
 
