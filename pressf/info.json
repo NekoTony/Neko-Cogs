@@ -1,0 +1,14 @@
+{
+   "AUTHOR":"NerdieTony",
+   "SHORT":"Pay respects for pressing F",
+   "DESCRIPTION":"You can pay respects to a certain thing or user by pressing f.",
+   "DISABLED":false,
+   "NAME":"Nookpedia",
+   "TAGS":[
+      "pressf",
+      "f",
+      "respects",
+      "press"
+   ],
+   "INSTALL_MSG":"You just installed **Nookpedia.py**! \nYou can pay respects to a certain thing or user by pressing f\n\n**Official Cog Support Server:** https://discord.gg/gcCpwGG"
+}
