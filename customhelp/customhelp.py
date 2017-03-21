@@ -81,7 +81,7 @@ class Customhelp:
             dataIO.save_json(self.weeee, self.tony)
             await self.bot.say("Congrats, the help message has been set to:")
             for page in pagify(message.content):
-                await self.bot.say(channel, page)
+                await self.bot.send_message(channel, page)
         else:
             await self.bot.say("There was an error.")
 
