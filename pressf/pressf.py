@@ -18,9 +18,11 @@ class PressF:
         author = ctx.message.author
         channel = ctx.message.channel
         if channel.id in self.messager or channel.id in self.messagem:
-            return await self.bot.send_message(channel, "Opps, can only pay respects if i'm not already paying respects in a channel. Wait till i'm done.")
+            return await self.bot.send_message(channel, "Oops! I'm still paying respects in this channel, you'll have to wait until I'm done.")
         
-        if user is None:
+        if user:
+            answer = user.display_name
+        else:
             await self.bot.send_message(channel, "What do you want to pay respects to?")
             message = await self.bot.wait_for_message(author=author, timeout=120, channel=channel)
 
@@ -28,10 +30,8 @@ class PressF:
                 return await self.bot.say("You took too long to reply.")
         
             answer = message.content
-            msg = "Everyone, let's pay respects to **{}**! Press f reaction on the this message to pay respects.".format(answer)
         
-        else:
-            msg = "Everyone, let's pay respects to **{}**! Press f reaction on the this message to pay respects.".format(user.display_name)
+        msg = "Everyone, let's pay respects to **{}**! Press f reaction on the this message to pay respects.".format(answer)
 
         message = await self.bot.send_message(channel, msg)
 
@@ -42,13 +42,15 @@ class PressF:
         except:
             self.messagem[channel.id] = []
             react = False
+            await self.bot.edit_message(message, "Everyone, let's pay respects to **{}**! Type `f` reaction on the this message to pay respects.".format(answer))
+            await self.bot.wait_for_message(channel=ctx.message.channel)
 
         await asyncio.sleep(120)
         await self.bot.delete_message(message)
         if react:
-            amount = len(self.messager[channel.id]) - 1
+            amount = len(self.messager[channel.id])
         else:
-            amount = len(self.messagem[channel.id]) - 1
+            amount = len(self.messagem[channel.id])
         
         if user is None:
             await self.bot.send_message(channel, "**{}** {} payed respects to **{}**.".format(amount, "person has" if amount == "1" else "people have", answer))
