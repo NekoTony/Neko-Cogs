@@ -72,18 +72,12 @@ class Customhelp:
         
         author = ctx.message.author
         channel = ctx.message.channel
-        await self.bot.say("Take your time and tell me, what do you want in your help message!")
-        
-        message = await self.bot.wait_for_message(channel=channel, author=author)
-        
-        if message is not None:
-            self.tony["helpMessage"] = message.content
+        if amount not in self.tony:
+            self.tony["amount"] = 5
             dataIO.save_json(self.weeee, self.tony)
-            await self.bot.say("Congrats, the help message has been set to:")
-            for page in pagify(message.content):
-                await self.bot.send_message(channel, page)
-        else:
-            await self.bot.say("There was an error.")
+        await self.add_message(author, channel)
+        
+        
 
     @checks.is_owner()
     @sethelp.command(pass_context=True)
@@ -173,6 +167,29 @@ class Customhelp:
                     await self.bot.send_message(channel, page)
             except discord.HTTPException:
                 await self.bot.say("Couldn't send the message.")
+    
+    async def add_message(self, author, channel):
+        amount = self.tony["amount"]
+        messages = []
+        for x in range(amount):
+            await self.bot.say("Hi, you got {} _____ to update left. What do you want to say in your {} message. Say `break` to end it".format(amount - x, x))
+            message = await self.bot.wait_for_message(author=author, channel=channel)
+            
+            if message.content.lower() == "break":
+                break
+            if message is not None:
+                messages.append(message.content)
+            else:
+                return await self.bot.say("There was an error")
+            
+        self.tony["helpMessage"] = messages
+        dataIO.save_json(self.weeee, self.tony)
+        await self.bot.say("Saved! Here's your message")
+        for x in self.tony["helpMessage"]:
+            await self.bot.say(x)
+        
+            
+            
                 
 def check_folders():
     if not os.path.exists("data/customhelp"):
@@ -183,13 +200,14 @@ def check_folders():
 def check_files():
     twentysix = "data/customhelp/settings.json"
     json = {
-        "helpMessage" : "Meep, to change help message, say `[p]sethelp setmsg`",
+        "helpMessage" : ["Meep, to change help message, say `[p]sethelp setmsg`"],
         "helpPrivate" : False,
         "embedColor" : "0xFFFFFF",
         "embedFooter" : "This is your footer!",
         "embedToggle" : False,
         "embedTitle" : "This is your title!",
-        "embedAuthor" : False
+        "embedAuthor" : False,
+        "amount" : 5
     }
 
     if not dataIO.is_valid_json(twentysix):
