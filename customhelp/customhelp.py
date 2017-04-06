@@ -72,7 +72,7 @@ class Customhelp:
         
         author = ctx.message.author
         channel = ctx.message.channel
-        if amount not in self.customhelp:
+        if "amount" not in self.customhelp:
             self.customhelp["amount"] = 5
             dataIO.save_json(self.file, self.customhelp)
         await self.add_message(author, channel)
