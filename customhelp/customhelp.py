@@ -12,8 +12,8 @@ class Customhelp:
     def __init__(self, bot):
         self.bot = bot
         self.bot.remove_command("help")
-        self.weeee = "data/customhelp/settings.json"
-        self.tony = dataIO.load_json(self.weeee)
+        self.file = "data/customhelp/settings.json"
+        self.customhelp = dataIO.load_json(self.file)
     
     @checks.is_owner()
     @commands.group(pass_context=True)
@@ -28,13 +28,13 @@ class Customhelp:
     async def embedauthor(self, ctx):
         """Allows you to decide if you want the bot in the embed message."""
         
-        if self.tony["embedAuthor"] is False:
-            self.tony["embedAuthor"] = True
-            dataIO.save_json(self.weeee, self.tony)
+        if self.customhelp["embedAuthor"] is False:
+            self.customhelp["embedAuthor"] = True
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("The author for embed have been turned on!")
         else:
-            self.tony["embedAuthor"] = False
-            dataIO.save_json(self.weeee, self.tony)
+            self.customhelp["embedAuthor"] = False
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("The author for embed have been turned off!")
 
     @checks.is_owner()
@@ -42,13 +42,13 @@ class Customhelp:
     async def embedtoggle(self, ctx):
         """Turn on or off the ability to make the help mesaged embed"""
         
-        if self.tony["embedToggle"] is False:
-            self.tony["embedToggle"] = True
-            dataIO.save_json(self.weeee, self.tony)
+        if self.customhelp["embedToggle"] is False:
+            self.customhelp["embedToggle"] = True
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("The embed have been turned on!")
         else:
-            self.tony["embedToggle"] = False
-            dataIO.save_json(self.weeee, self.tony)
+            self.customhelp["embedToggle"] = False
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("The embed have been turned off!")
     
     @checks.is_owner()
@@ -56,13 +56,13 @@ class Customhelp:
     async def privateset(self, ctx):
         """Turn on or off the ability to make help messages in direct message."""
         
-        if self.tony["helpPrivate"] is False:
-            self.tony["helpPrivate"] = True
-            dataIO.save_json(self.weeee, self.tony)
+        if self.customhelp["helpPrivate"] is False:
+            self.customhelp["helpPrivate"] = True
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("The help message will be now sent to direct message!")
         else:
-            self.tony["helpPrivate"] = False
-            dataIO.save_json(self.weeee, self.tony)
+            self.customhelp["helpPrivate"] = False
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("The help message will not be set within the channel it has been said in??!")
           
     @checks.is_owner()
@@ -72,9 +72,9 @@ class Customhelp:
         
         author = ctx.message.author
         channel = ctx.message.channel
-        if amount not in self.tony:
-            self.tony["amount"] = 5
-            dataIO.save_json(self.weeee, self.tony)
+        if amount not in self.customhelp:
+            self.customhelp["amount"] = 5
+            dataIO.save_json(self.file, self.customhelp)
         await self.add_message(author, channel)
         
         
@@ -91,8 +91,8 @@ class Customhelp:
         message = await self.bot.wait_for_message(channel=channel, author=author)
         
         if message is not None:
-            self.tony["embedTitle"] = message.content
-            dataIO.save_json(self.weeee, self.tony)
+            self.customhelp["embedTitle"] = message.content
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("Congrats, the help embed title has been set to: ```{}```".format(message.content))
         else:
             await self.bot.say("There was an error.")
@@ -109,8 +109,8 @@ class Customhelp:
         message = await self.bot.wait_for_message(channel=channel, author=author)
         
         if message is not None:
-            self.tony["embedFooter"] = message.content
-            dataIO.save_json(self.weeee, self.tony)
+            self.customhelp["embedFooter"] = message.content
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("Congrats, the help embed footer has been set to: ```{}```".format(message.content))
         else:
             await self.bot.say("There was an error.")
@@ -127,8 +127,8 @@ class Customhelp:
         message = await self.bot.wait_for_message(channel=channel, author=author)
         
         if message is not None:
-            self.tony["embedColor"] = message.content
-            dataIO.save_json(self.weeee, self.tony)
+            self.customhelp["embedColor"] = message.content
+            dataIO.save_json(self.file, self.customhelp)
             await self.bot.say("Congrats, the help embed color has been set to: ```{}```".format(message.content))
         else:
             await self.bot.say("There was an error.")
@@ -138,21 +138,21 @@ class Customhelp:
         
         author = ctx.message.author
         
-        if self.tony["helpPrivate"]:
+        if self.customhelp["helpPrivate"]:
             channel = author
         else:
             channel = ctx.message.channel
         
-        msg = self.tony["helpMessage"]
-        if self.tony["embedToggle"]:
+        msg = self.customhelp["helpMessage"]
+        if self.customhelp["embedToggle"]:
             try:
-                color = int(self.tony["embedColor"], 16)
+                color = int(self.customhelp["embedColor"], 16)
             except:
                 color = 0x898a8b
             for page in pagify(msg):
-                title = self.tony["embedTitle"]
-                footer = self.tony["embedFooter"]
-                auth = self.tony["embedAuthor"]
+                title = self.customhelp["embedTitle"]
+                footer = self.customhelp["embedFooter"]
+                auth = self.customhelp["embedAuthor"]
                 embed = discord.Embed(colour=color, title=title, description=page)
                 if auth:
                     embed.set_author(name=self.bot.user.name, url=self.bot.user.avatar_url)
@@ -169,7 +169,7 @@ class Customhelp:
                 await self.bot.say("Couldn't send the message.")
     
     async def add_message(self, author, channel):
-        amount = self.tony["amount"]
+        amount = self.customhelp["amount"]
         messages = []
         for x in range(amount):
             await self.bot.say("Hi, you got {} _____ to update left. What do you want to say in your {} message. Say `break` to end it".format(amount - x, x))
@@ -182,10 +182,10 @@ class Customhelp:
             else:
                 return await self.bot.say("There was an error")
             
-        self.tony["helpMessage"] = messages
-        dataIO.save_json(self.weeee, self.tony)
+        self.customhelp["helpMessage"] = messages
+        dataIO.save_json(self.file, self.customhelp)
         await self.bot.say("Saved! Here's your message")
-        for x in self.tony["helpMessage"]:
+        for x in self.customhelp["helpMessage"]:
             await self.bot.say(x)
         
             
