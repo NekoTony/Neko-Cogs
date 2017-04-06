@@ -144,6 +144,7 @@ class Customhelp:
             channel = ctx.message.channel
         
         msg = self.customhelp["helpMessage"]
+        msg = "\n".join(msg)
         if self.customhelp["embedToggle"]:
             try:
                 color = int(self.customhelp["embedColor"], 16)
