@@ -4,6 +4,7 @@ from cogs.utils.dataIO import dataIO
 from .utils import checks
 from __main__ import send_cmd_help
 import os
+import asyncio
 
 class Newsletter:
     """Allow users to sign up for a newsletter from the owner"""
@@ -72,8 +73,11 @@ class Newsletter:
                                   id=id)
                 try:
                     await self.bot.send_message(users, message)
+                    
                 except:
                     await self.bot.say("The message didn't go thru you `Fox News has edited this word out due to censorship, we apologize` owner! :angry:")
+                
+                asyncio.sleep(1)
             else:
                 pass
         else:
