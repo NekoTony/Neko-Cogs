@@ -1,7 +1,7 @@
 {
    "AUTHOR":"NerdieTony",
    "SHORT":"Custom Help Command",
-   "DESCRIPTION":"Allows you to create a custom help message, instead of the discord.py origianl one.",
+   "DESCRIPTION":"Allows you to create a custom help message, instead of the discord.py original one.",
    "DISABLED":false,
    "NAME":"Customhelp",
    "TAGS":[
