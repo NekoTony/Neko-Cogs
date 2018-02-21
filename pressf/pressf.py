@@ -31,7 +31,7 @@ class PressF:
         
             answer = message.content
         
-        msg = "Everyone, let's pay respects to **{}**! Press f reaction on the this message to pay respects.".format(answer)
+        msg = "Everyone, let's pay respects to **{}**! Press f reaction on this message to pay respects.".format(answer)
 
         message = await self.bot.send_message(channel, msg)
 
