@@ -7,7 +7,6 @@ from __main__ import send_cmd_help
 from .utils.dataIO import dataIO
 from .utils import checks
 
-userz = {}
 class Q20:
     """Play 20 Questions"""
 
@@ -15,6 +14,7 @@ class Q20:
         self.bot = bot
         self.q = "data/q20/settings.json"
         self.q20 = dataIO.load_json(self.q)
+        self.userz = {}
 
     @commands.group(pass_context=True, invoke_without_command=True)
     async def twentyq(self, ctx):
@@ -100,7 +100,7 @@ class Q20:
         author = ctx.message.author
         channel = ctx.message.channel
         server = ctx.message.server
-        global userz
+        
 
         maxq = self.q20["maxq"]
         try:
@@ -118,16 +118,17 @@ class Q20:
         timez = self.q20["time"]
         await self.bot.wait_for_message(channel=channel, timeout=timez, check=self.check2)
 
-        sample(userz[channel.id], len(userz[channel.id]))
+        sample(self.userz[channel.id], len(self.userz[channel.id]))
 
-        if len(userz[channel.id]) == 0:
+        if len(self.userz[channel.id]) == 0:
             return await self.bot.say("You can't play by yourself.")
-        await self.bot.send_message(author, "Well there bud, you got {} people joining your game. Now let me ask you, what is the answer people need to guess?".format(len(userz[channel.id])))
+        await self.bot.send_message(author, "Well there bud, you got {} people joining your game. Now let me ask you, what is the answer people need to guess?".format(len(self.userz[channel.id])))
         answer = await self.bot.wait_for_message(author=author, timeout=self.q20["time"], check=self.check)
         if answer is None:
             await self.bot.send_message(author, "You too too long to reply")
             await self.bot.say("{}, didn't provide me with a answer.".format(author))
-            del userz[channel.id]
+            if channel.id in self.userz:
+                del self.userz[channel.id]
             return
         else:
             ans = answer.content
@@ -138,7 +139,8 @@ class Q20:
         if answer2 is None:
             await self.bot.send_message(author, "You too too long to reply")
             await self.bot.say("{}, didn't provide me with a theme.".format(author))
-            del userz[channel.id]
+            if channel.id in self.userz:
+                self.userz self.userz[channel.id]
             return
         else:
             theme = answer2.content
@@ -152,19 +154,19 @@ class Q20:
                 await self.bot.say("Questions are done, time for final guesses!")
                 break
             
-            user = userz[channel.id][0]
+            user = self.userz[channel.id][0]
             await self.bot.say("{}, would you like to ask a `question` or `guess`.".format(user.mention))
             saying = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
             
             if saying is None:
                 await self.bot.say("You took too long to respond")
-                userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
             elif saying.content.lower() == "question":
                 await self.bot.say("Ok then, what's your question? Make sure it's a yes or no question only.")
                 question = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
                 if question is None:
                     await self.bot.say("{} took too long to answer a question, next person.")
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                     continue
                 await self.bot.say("Kool! {}, you can only reply with `yes`,`no`,`sometimes`, or `idk`. So, what is it??".format(author.mention))
                 tf = await self.bot.wait_for_message(author=author, timeout=self.q20["time"])
@@ -174,39 +176,40 @@ class Q20:
                 elif tf.content.lower() in ("yes", "y"):
                     add = '{} asked the question "{}" and got the answer was "{}".'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                     questions = questions - 1
                 elif tf.content.lower() in ("no", "n"):
                     add = '{} asked the question "{}" and got the answer was "{}".'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                     questions = questions - 1
                 elif tf.content.lower() == "idk":
                     add = '{} asked the question "{}" and got the answer was "{}".'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                     questions = questions - 1
                 elif tf.content.lower() == "sometimes":
                     add = '{} asked the question "{}" and got the answer was "{}".'.format(user.display_name, question.content, tf.content)
                     quz.append(add)
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                     questions = questions - 1
             elif saying.content.lower() == "guess":
                 await self.bot.say("Ok, what is your guess?")
-                guess = await self.bot.wait_for_message(author=user, timeout=self.q20["time"])
+                guess = await self.bot.wait_ftabor_message(author=user, timeout=self.q20["time"])
 
                 if guess is None:
                     await self.bot.say("You took too long to respond.")
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                 elif guess.content.lower() == ans.lower():
                     await self.bot.say("{}, you got it right!".format(user.display_name))
-                    del userz[channel.id]
+                    if channel.id in self.userz:
+                        del self.userz[channel.id]
                     return
                 else:
                     await self.bot.say("Sorry, but that guess was incorrect.")
                     add = "{} guessed <{}>".format(user.display_name, guess.content)
                     quz.append(add)
-                    userz[channel.id].append(userz[channel.id].pop(userz[channel.id].index(userz[channel.id][0])))
+                    self.userz[channel.id].append(self.userz[channel.id].pop(self.userz[channel.id].index(self.userz[channel.id][0])))
                     questions = questions - 1
 
             else:
@@ -217,16 +220,17 @@ class Q20:
 
         maxfg = self.q20["maxfg"]
         count = 0
-        userz = sample(userz[channel.id], len(userz[channel.id]))
+        self.userz = sample(self.userz[channel.id], len(self.userz[channel.id]))
         if maxfg != 0:
-            for x in userz:
+            for x in self.userz:
                 user = x
                 await self.bot.say("What is your final guess, {}?".format(user.mention))
                 zzz = await self.bot.wait_for_message(author=user)
 
                 if zzz.content.lower() == ans.lower():
                     await self.bot.say("You got it right!")
-                    del userz[channel.id]
+                    if channel.id in self.userz:
+                        del self.userz[channel.id]
                     return
                 else:
                     await self.bot.say("Sorry but that was incorrect.")
@@ -235,24 +239,24 @@ class Q20:
 
                 if count == maxfg:
                     await self.bot.say("Seems like no one got it! The answer was **{}**".format(ans.title()))
-                    del userz[channel.id]
+                    if channel.id in self.userz:
+                        del self.userz[channel.id]
                     return
 
         await self.bot.say("Seems like no one got it! The answer was **{}**".format(ans.title()))
                 
     def check2(self, msg):
-        global userz
         picked = self.q20["picked"]
         user = msg.author
         channel = msg.channel
-        if channel.id not in userz:
-            userz[channel.id] = []
+        if channel.id not in self.userz:
+            self.userz[channel.id] = []
         if msg.content.lower() == "join":
-            if user not in userz[channel.id]:
-                userz[channel.id].append(user)
+            if user not in self.userz[channel.id]:
+                self.userz[channel.id].append(user)
                 print("{} has joined!".format(user))
 
-        return len(userz[channel.id]) == picked
+        return len(self.userz[channel.id]) == picked
     
     def check(self, msg):
         return msg.channel.is_private
